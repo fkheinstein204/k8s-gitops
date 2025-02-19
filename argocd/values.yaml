@@ -1,8 +1,10 @@
 global:
   domain: argocd.example.com
-
+  
 configs:
   params:
+    # Run server without TLS
+    # Traefik finishes TLS connections
     server.insecure: true
 
 server:

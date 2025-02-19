@@ -1,0 +1,14 @@
+ingressRoute:
+  dashboard:
+    enabled: true
+
+#logs:
+#  general:
+#    level: DEDUB
+#  access:
+#    enabled: true
+
+#tlsStore:
+#  default:
+#    defaultCertificate:
+#      secretName: wildcard-ftscode-lab-production-tls
