@@ -1,6 +1,6 @@
 global:
   domain: argocd.example.com
-  
+
 configs:
   params:
     # Run server without TLS

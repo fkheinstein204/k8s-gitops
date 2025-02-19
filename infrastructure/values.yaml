@@ -1,0 +1,27 @@
+
+repo:
+  url: https://github.com/fkheinstein204/k8s-gitops.git
+  revision: main
+
+
+applications:
+  - name: cert-manager
+    namespace: cert-manager
+    path: infrastructure/core/cert-manager
+    manifest-paths: /infrastructure/core/cert-manager
+    sync-wave: "-4"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+
+applications:
+  - name: cert-manager
+    namespace: cert-manager
+    path: infrastructure/core/traefik
+    manifest-paths: /infrastructure/core/traefik
+    sync-wave: "-4"
+    helm:
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true

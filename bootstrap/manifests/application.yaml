@@ -13,7 +13,7 @@ spec:
   project: devops
   destination:
     name: ''
-    namespace: devops
+    namespace: argocd
     server: 'https://kubernetes.default.svc'
   source:
     path: apps
