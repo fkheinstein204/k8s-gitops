@@ -6,10 +6,17 @@ SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 # bootstrap argocd app.
-kubectl apply -f ${SCRIPT_DIR}/argocd-install.yaml
 
-kubectl wait --for=condition=available --timeout=60s --all deployments
+helm repo add argo https://argoproj.github.io/argo-helm
+helm repo update
+#helm install argocd -n argocd -f ${SCRIPT_DIR}/argocd/dev-values.yaml argo/argo-cd --create-namespace --wait
+helm upgrade argocd -n argocd -f ${SCRIPT_DIR}/argocd/dev-values.yaml argo/argo-cd --create-namespace --wait
 
 # apply argo-cd projects.
+kubectl apply -f ${SCRIPT_DIR}/manifests/namespaces.yaml
 kubectl apply -f ${SCRIPT_DIR}/manifests/project.yaml
 kubectl apply -f ${SCRIPT_DIR}/manifests/application.yaml
+
+# argocd app
+#kubectl apply -f ${SCRIPT_DIR}/argocd-install.yaml
+

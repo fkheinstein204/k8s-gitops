@@ -6,7 +6,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: devops
-  namespace: homelab-app
+  namespace: argocd
 spec:
   description: DevOps apps on Kubernetes
   sourceRepos:

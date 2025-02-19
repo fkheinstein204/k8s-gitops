@@ -1,0 +1,7 @@
+# Create the homelab-app namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: homelab-app
+  labels:
+    app.kubernetes.io/name: homelab-app
