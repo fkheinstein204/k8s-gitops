@@ -12,6 +12,7 @@ flux bootstrap github \
   --repository=k8s-gitops \
   --branch=main \
   --path=./clusters/production \
+  --cluster-domain=k8s-prod.devops.lab  \
   --personal=true \
   --private=false
 
@@ -24,6 +25,7 @@ flux bootstrap github \
   --repository=k8s-gitops \
   --branch=main \
   --path=./clusters/development \
+  --cluster-domain=k8s-dev.devops.lab  \
   --personal=true \
   --private=false 
 
