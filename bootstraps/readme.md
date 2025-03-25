@@ -1,4 +1,7 @@
-# Create a GitHub personal access token and export it as an env var
+## Create a GitHub personal access token and export it as an env var
+
+```bash
+
 export GITHUB_TOKEN='<your-token>'
 
 kubectl config use-context admin-prod@k8s-gitops
@@ -24,4 +27,4 @@ flux bootstrap github \
   --personal=true \
   --private=false 
 
-
+```
