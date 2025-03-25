@@ -2,21 +2,11 @@
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
-  name: homelab-pool
-  namespace: metallb-system
-spec:
-  addresses:
-  - 10.128.1.220-10.128.1.226
-
----
-apiVersion: metallb.io/v1beta1
-kind: IPAddressPool
-metadata:
   name: service-pool
   namespace: metallb-system
 spec:
   addresses:
-  - 10.128.1.210-10.128.1.216
+  - 10.128.1.230-10.128.1.235
   autoAssign: false
 
 ---
@@ -27,5 +17,4 @@ metadata:
   namespace: metallb-system
 spec:
   ipAddressPools:
-  - homelab-pool
   - service-pool
