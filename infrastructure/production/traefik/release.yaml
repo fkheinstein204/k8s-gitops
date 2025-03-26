@@ -1,0 +1,32 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: traefik
+spec:
+  chart:
+    spec:
+      chart: traefik
+      version: 29.0.x # auto-update to semver bugfixes only
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+        namespace: flux-system
+  interval: 15m
+  timeout: 5m
+  releaseName: traefik
+  values:
+    ingressRoute:
+      dashboard:
+        enabled: true
+
+    logs:
+      general:
+        level: DEDUB
+      access:
+        enabled: true
+
+    #tlsStore:
+    #  default:
+    #    defaultCertificate:
+    #      secretName: wildcard-homelab-ftscode-de-prod-tls
