@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: cert-manager
 resources:
   - cluster-root-ca.yaml
-  - cluster-intermediate-ca-lab.yaml
+  - cluster-intermediate-ca.yaml
