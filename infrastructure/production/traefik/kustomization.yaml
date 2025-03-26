@@ -4,3 +4,4 @@ namespace: traefik
 resources:
   - ../../base/traefik
   - certificates
+  - traefik-ingress-route.yaml
