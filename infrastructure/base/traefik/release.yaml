@@ -15,6 +15,7 @@ spec:
   interval: 15m
   timeout: 5m
   releaseName: traefik
+  targetNamespace: traefik
   values:
     ingressRoute:
       dashboard:
