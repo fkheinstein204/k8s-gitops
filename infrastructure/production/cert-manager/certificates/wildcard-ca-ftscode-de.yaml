@@ -1,18 +1,18 @@
-#---
-#apiVersion: cert-manager.io/v1
-#kind: Certificate
-#metadata:
-#  name: wildcard-prod-ftscode-prod-de
-#  namespace: traefik
-#spec:
-#  secretName: wildcard-prod-ftscode-de-prod-tls
-#  issuerRef:
-#    name: letsencrypt-production
-#    kind: ClusterIssuer
-#  commonName: "*.prod.ftscode.de"
-#  dnsNames:
-#  - "prod.ftscode.de"
-#  - "*.prod.ftscode.de"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-prod-ftscode-prod-de
+  namespace: traefik
+spec:
+  secretName: wildcard-prod-ftscode-de-prod-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "*.prod.ftscode.de"
+  dnsNames:
+  - "prod.ftscode.de"
+  - "*.prod.ftscode.de"
 
 ---
 apiVersion: cert-manager.io/v1
