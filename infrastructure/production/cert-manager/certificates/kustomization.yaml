@@ -5,4 +5,4 @@ resources:
   - cloudfare-api-sealed-prod.yaml
   - cluster-root-ca.yaml
   - cluster-intermediate-ca.yaml
-  - clusterissuer-letsencrypt-staging.yaml
+  - clusterissuer-letsencrypt-production.yaml
