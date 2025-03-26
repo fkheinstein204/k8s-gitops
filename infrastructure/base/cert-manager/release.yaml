@@ -12,7 +12,7 @@ spec:
       version: "v1.17.1"
       sourceRef:
         kind: HelmRepository
-        name: cert-manager
+        name: jetstack
         namespace: cert-manager
       interval: 12h
   values:
