@@ -30,7 +30,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: cluster-root-ca-issuer
+  name: cluster-production-ca-issuer
 spec:
   ca:
     secretName: cluster-root-ca-secret
