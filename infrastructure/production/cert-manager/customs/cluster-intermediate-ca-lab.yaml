@@ -1,0 +1,26 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cluster-intermediate-ca-lab
+  namespace: cert-manager
+spec:
+  isCA: true
+  commonName: cluster-intermediate-ca-lab
+  secretName: cluster-intermediate-ca-lab-secret
+  duration: 43800h # 5y
+  renewBefore: 35040h # 4y
+  privateKey:
+    algorithm: RSA
+    size: 4096
+  issuerRef:
+    name: cluster-root-ca-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: cluster-intermediate-ca-lab-issuer
+spec:
+  ca:
+    secretName: cluster-intermediate-ca-lab-secret
