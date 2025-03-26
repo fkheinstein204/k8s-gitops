@@ -6,6 +6,7 @@ metadata:
   namespace: cert-manager
 spec:
   interval: 30m
+  releaseName: cert-manager
   chart:
     spec:
       chart: cert-manager
@@ -22,7 +23,7 @@ spec:
   upgrade:
     crds: CreateReplace
     remediation:
-      retries: 5      
+      retries: 5
   values:
     crds:
       enabled: true
