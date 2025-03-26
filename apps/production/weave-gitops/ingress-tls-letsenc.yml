@@ -11,10 +11,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - ui-flux.dev.ftscode.de
-      secretName: flux-ingress-production-tls
+        - ui-flux.prod.ftscode.de
+      secretName: ui-flux-prod-tls
   rules:
-  - host: ui-flux.dev.ftscode.de
+  - host: ui-flux.prod.ftscode.de
     http:
       paths:
       - path: /
