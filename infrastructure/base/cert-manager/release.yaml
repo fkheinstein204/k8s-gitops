@@ -10,11 +10,11 @@ spec:
   chart:
     spec:
       chart: cert-manager
-      version: "v1.17.0"
+      version: "v1.17.1"
       sourceRef:
         kind: HelmRepository
         name: cert-manager
-        namespace: cert-manager
+        namespace: flux-system
       interval: 15m
   install:
     createNamespace: true
