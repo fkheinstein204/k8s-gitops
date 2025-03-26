@@ -22,4 +22,4 @@ spec:
         memory: 64Mi
     metrics:
       serviceMonitor:
-        enabled: false
+        enabled: true

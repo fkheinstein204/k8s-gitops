@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: sealed-secrets
   labels:
-    toolkit.fluxcd.io/tenant: sre-team  
+    toolkit.fluxcd.io/tenant: sre-team
