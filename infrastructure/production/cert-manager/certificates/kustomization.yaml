@@ -6,3 +6,4 @@ resources:
   - cluster-root-ca.yaml
   - cluster-intermediate-ca.yaml
   - clusterissuer-letsencrypt-production.yaml
+  - wildcard-ca-ftscode-de.yaml

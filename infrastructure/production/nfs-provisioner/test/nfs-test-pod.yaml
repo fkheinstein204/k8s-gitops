@@ -18,3 +18,4 @@ spec:
     - name: nfs-pvc
       persistentVolumeClaim:
         claimName: nfsclaim
+        
