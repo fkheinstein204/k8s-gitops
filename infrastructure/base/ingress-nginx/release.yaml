@@ -28,6 +28,7 @@ spec:
       watchIngressWithoutClass: true
       ingressClassByName: true
       service:
+        type: "LoadBalancer"
         externalTrafficPolicy: Local
         internal:
           enabled: true
