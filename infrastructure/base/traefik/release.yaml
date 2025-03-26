@@ -11,11 +11,10 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: traefik
-        namespace: flux-system
+        namespace: traefik
   interval: 15m
   timeout: 5m
   releaseName: traefik
-  targetNamespace: traefik
   values:
     ingressRoute:
       dashboard:
@@ -27,7 +26,7 @@ spec:
       access:
         enabled: true
 
-    #tlsStore:
-    #  default:
-    #    defaultCertificate:
-    #      secretName: wildcard-homelab-ftscode-de-prod-tls
+    tlsStore:
+      default:
+        defaultCertificate:
+          secretName: wildcard-prod-ftscode-de-prod-tls
