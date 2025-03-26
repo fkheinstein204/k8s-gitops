@@ -4,5 +4,5 @@ metadata:
   name: nfs-subdir
   namespace: nfs-provisioner
 spec:
-  interval: 15m
-  url: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+  interval: 50m
+  url: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
