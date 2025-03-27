@@ -6,6 +6,9 @@ metadata:
   namespace: kube-system
 spec:
   interval: 10m
+  releaseName: cilium
+  targetNamespace: kube-system
+  storageNamespace: kube-system
   chart:
     spec:
       chart: cilium
@@ -47,8 +50,10 @@ spec:
       ui:
         enabled: true
         rollOutPods: true
+        
     operator:
-      tolerations: []
+      replicas: 1
+
     ipam:
       mode: kubernetes
 
