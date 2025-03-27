@@ -35,6 +35,9 @@ spec:
 
     hubble:
       enabled: true
+      relay:
+        enabled: true
+
       metrics:
         enableOpenMetrics: true
         enabled:
