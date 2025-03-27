@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: nfs-provisioner
 resources:
   - ../../base/nfs-provisioner
-  #- test
+  - test
