@@ -56,6 +56,11 @@ spec:
       ui:
         enabled: true
 
+    prometheus: 
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        trustCRDsExist: true
 
 
     operator:
@@ -66,7 +71,7 @@ spec:
         serviceMonitor:
           enabled: true
           interval: "30s"
-          trustCRDsExist: true
+          
           labels:
             release: "prom-operator"
 
