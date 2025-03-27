@@ -4,7 +4,7 @@
 
 export GITHUB_TOKEN='<your-token>'
 
-kubectl config use-context admin-prod@k8s-gitops
+kubectl config use-context admin-prod@k8s-prod.lab
 
 flux bootstrap github \
   --token-auth \
@@ -12,12 +12,12 @@ flux bootstrap github \
   --repository=k8s-gitops \
   --branch=main \
   --path=./clusters/production \
-  --cluster-domain=k8s-prod.devops.lab  \
+  --cluster-domain=k8s-prod.lab  \
   --personal=true \
   --private=false
 
 
-kubectl config use-context admin-dev@k8s-gitops
+kubectl config use-context admin-dev@k8s-dev.lab
 
 flux bootstrap github \
   --token-auth \
@@ -25,7 +25,7 @@ flux bootstrap github \
   --repository=k8s-gitops \
   --branch=main \
   --path=./clusters/development \
-  --cluster-domain=k8s-dev.devops.lab  \
+  --cluster-domain=k8s-dev.lab  \
   --personal=true \
   --private=false 
 
