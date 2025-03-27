@@ -66,6 +66,7 @@ spec:
         serviceMonitor:
           enabled: true
           interval: "30s"
+          trustCRDsExist: true
           labels:
             release: "prom-operator"
 
