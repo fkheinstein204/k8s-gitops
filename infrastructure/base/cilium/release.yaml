@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: cilium
-      version: 1.18.x # Update this to the latest version
+      version: 1.17.2
       sourceRef:
         kind: HelmRepository
         name: cilium
