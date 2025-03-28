@@ -27,7 +27,7 @@ spec:
 
     etcd:
       clusterDomain: k8s-prod.lab
-    k8sServiceHost: k8s-prod.lab
+    k8sServiceHost: 10.128.1.60
     k8sServicePort: "6443"
 
     operator:
