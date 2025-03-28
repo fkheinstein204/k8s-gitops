@@ -26,6 +26,7 @@ spec:
       strategy: rollback
       retries: 3
   values:
+
     hubble:
       enabled: true
       metrics:
@@ -50,16 +51,5 @@ spec:
       ui:
         enabled: true
         rollOutPods: true
-        
     operator:
-      replicas: 1
-
-    ipam:
-      mode: kubernetes
-
-    l2announcements:
-      enabled: true
-    loadBalancer:
-      algorithm: maglev
-      mode: hybrid
-      serviceTopology: true
+      tolerations: []
