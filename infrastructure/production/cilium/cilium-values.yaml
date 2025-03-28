@@ -15,6 +15,32 @@ spec:
 
     hubble:
       enabled: true
+      relay:
+        enabled: true
+        rollOutPods: true
+        prometheus:
+          serviceMonitor:
+            enabled: true
+      ui:
+        enabled: true
+        rollOutPods: true
+      metrics:
+        enabled:
+          - dns:query
+          - drop
+          - tcp
+          - flow
+          - port-distribution
+          - icmp
+          - http
+        serviceMonitor:
+          enabled: true
+        dashboards:
+          enabled: true
+    operator:
+      enabled: true
+      tolerations: []
+
       peerService:
         clusterDomain: k8s-prod.lab
       serviceMonitor:
