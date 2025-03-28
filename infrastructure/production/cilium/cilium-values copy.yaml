@@ -5,8 +5,7 @@ metadata:
   namespace: kube-system
 spec:
   values:
-
-
+    #kubeProxyReplacement: true
 
     prometheus:
       enabled: true
@@ -49,32 +48,9 @@ spec:
         interval: 30s
 
 
-
-
-    kubeProxyReplacement: true
-    ipam:
-      mode: kubernetes
-
-    cgroup:
-      automount:
-        enabled: false
-      hostRoot: /sys/fs/cgroup
-
-    securityContext:
-      capabilities:
-        ciliumAgent:
-          - CHOWN
-          - KILL
-          - NET_ADMIN
-          - NET_RAW
-          - IPC_LOCK
-          - SYS_ADMIN
-          - SYS_RESOURCE
-          - DAC_OVERRIDE
-          - FOWNER
-          - SETGID
-          - SETUID
-        cleanCiliumState:
-          - NET_ADMIN
-          - SYS_ADMIN
-          - SYS_RESOURCE
+    serviceAccounts:
+      operator:
+        create: true
+        name: cilium-operator
+        automount: true
+        annotations: {}
