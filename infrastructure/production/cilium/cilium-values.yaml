@@ -17,3 +17,10 @@ spec:
       enabled: true
       peerService:
         clusterDomain: k8s-prod.lab
+
+    serviceAccounts:
+      operator:
+        create: true
+        name: cilium-operator
+        automount: true
+        annotations: {}
