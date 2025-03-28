@@ -22,11 +22,9 @@ spec:
       ui:
         enabled: true
       peerService:
-        clusterDomain: k8s-prod.lab
-
-
+        clusterDomain: 10.128.1.60
     etcd:
-      clusterDomain: k8s-prod.lab
+      clusterDomain: 10.128.1.60
     k8sServiceHost: 10.128.1.60
     k8sServicePort: "6443"
 
@@ -35,7 +33,7 @@ spec:
       tolerations: []
 
       peerService:
-        clusterDomain: k8s-prod.lab
+        clusterDomain: 10.128.1.60
       serviceMonitor:
         enabled: true
         interval: 30s
