@@ -12,4 +12,4 @@ spec:
   commonName: "*.prod.ftscode.de"
   dnsNames:
   - "prod.ftscode.de"
-  - "*.prod.ftscode.de" 
+  - "*.prod.ftscode.de"
