@@ -15,6 +15,9 @@ spec:
         name: ingress-nginx
         namespace: ingress-nginx
       interval: 12h
+  dependsOn:
+    - name: metallb
+      namespace: metallb-system
   values:
     controller:
       config:
@@ -33,6 +36,9 @@ spec:
         internal:
           enabled: true
           externalTrafficPolicy: "Local"
+      extraArgs:
+        enable-ssl-passthrough: ""
+
       replicaCount: 1
       minAvailable: 1
       allowSnippetAnnotations: true
