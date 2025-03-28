@@ -17,6 +17,10 @@ spec:
       enabled: true
       peerService:
         clusterDomain: k8s-prod.lab
+      serviceMonitor:
+        enabled: true
+        interval: 30s
+
 
     serviceAccounts:
       operator:
