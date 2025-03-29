@@ -17,7 +17,7 @@ spec:
       interval: 1m
   values:
     clusterDomain: k8s-prod.lab
-    externalURL: https://registry.prod.ftscode.de
+    externalURL: https://habor.prod.ftscode.de
     adminPassword: changeme
     persistence:
       persistentVolumeClaim:
@@ -37,5 +37,5 @@ spec:
       core:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
-        hostname: registry.prod.ftscode.de
+        hostname: habor.prod.ftscode.de
         tls: true
