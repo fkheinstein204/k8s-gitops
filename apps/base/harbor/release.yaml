@@ -5,6 +5,10 @@ metadata:
   name: harbor
   namespace: harbor
 spec:
+  releaseName: harbor-release
+  targetNamespace: harbor
+  install:
+    createNamespace: true
   interval: 5m
   chart:
     spec:
@@ -13,15 +17,92 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: harbor
-        namespace: kube-system
-      interval: 1m
+        namespace: harbor
+      interval: 12h
   values:
+    adminPassword: AShjui1230u98SAJUIejh290183j #First time password
+    global:
+      defaultStorageClass: nfs-client
+    persistence:
+      persistentVolumeClaim:
+        registry: 
+          storageClass: nfs-client
+        jobservice: 
+          storageClass: nfs-client
+        trivy: 
+          storageClass: nfs-client
+
+    externalURL: https://habor.prod.ftscode.de
+
     expose:
       tls:
         enabled: true
-        secretName: ingress-cert-habor
-      type: clusterIP
-    externalURL: https://habor.prod.ftscode.de
-    harborAdminPassword: admin
-    persistence:
-      enabled: false
+        certSource: auto
+        secret:
+          secretName: "lag0-harbor-certificate"
+      ingress:
+        hosts:
+          core: habor.prod.ftscode.de
+        className: "nginx"
+        annotations:
+          # note different ingress controllers may require a different ssl-redirect annotation
+          # for Envoy, use ingress.kubernetes.io/force-ssl-redirect: "true" and remove the nginx lines below
+          ingress.kubernetes.io/ssl-redirect: "true"
+          ingress.kubernetes.io/proxy-body-size: "0"
+          nginx.ingress.kubernetes.io/ssl-redirect: "true"
+          nginx.ingress.kubernetes.io/proxy-body-size: "0"
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          nginx.ingress.kubernetes.io/proxy-connect-timeout: "600000"
+          nginx.ingress.kubernetes.io/proxy-send-timeout: "600000"
+          nginx.ingress.kubernetes.io/proxy-read-timeout: "600000"
+    nginx:
+      image:
+        repository: ghcr.io/octohelm/harbor/nginx-photon
+        tag: v2.12.0
+    portal:
+      image:
+        repository: ghcr.io/octohelm/harbor/harbor-portal
+        tag: v2.12.0
+    registry:
+      registry:
+        image:
+          repository: ghcr.io/octohelm/harbor/registry-photon
+          tag: v2.12.0
+      controller:
+        image:
+          repository: ghcr.io/octohelm/harbor/harbor-registryctl
+          tag: v2.12.0
+    trivy:
+      image:
+        repository: ghcr.io/octohelm/harbor/trivy-adapter-photon
+        tag: v2.12.0
+    jobservice:
+      image:
+        repository: ghcr.io/octohelm/harbor/harbor-jobservice
+        tag: v2.12.0
+    chartmuseum:
+      image:
+        repository: ghcr.io/octohelm/harbor/chartmuseum-photon
+        tag: v2.12.0
+    clair:
+      image:
+        repository: ghcr.io/octohelm/harbor/clair-photon
+        tag: v2.12.0
+    database:
+      internal:
+        image:
+          repository: ghcr.io/octohelm/harbor/harbor-db
+          tag: v2.12.0
+    redis:
+      internal:
+        image:
+          repository: ghcr.io/octohelm/harbor/redis-photon
+          tag: v2.12.0
+    core:
+      image:
+        repository: ghcr.io/octohelm/harbor/harbor-core
+        tag: v2.12.0
+    exporter:
+      image:
+        repository: ghcr.io/octohelm/harbor/harbor-exporter
+        tag: v2.12.0

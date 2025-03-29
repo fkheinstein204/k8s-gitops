@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: harbor
-  namespace: kube-system
+  namespace: harbor
 spec:
-  interval: 1h0m0s
+  interval: 24h
   url: "https://helm.goharbor.io"
