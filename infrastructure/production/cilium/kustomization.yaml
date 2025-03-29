@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: kube-system
 resources:
   - ../../base/cilium
+  - configs
 
 patches:
   - path: cilium-values.yaml
