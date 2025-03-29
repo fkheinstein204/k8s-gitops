@@ -8,7 +8,8 @@ metadata:
 spec:
   ingressClassName: cilium
   rules:
-  - http:
+  - host: demo-cilium.prod.ftscode.de
+    http:
       paths:
       - backend:
           service:
