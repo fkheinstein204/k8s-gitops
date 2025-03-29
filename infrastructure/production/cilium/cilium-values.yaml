@@ -26,10 +26,14 @@ spec:
     k8sServicePort: "6443"
     l2announcements:
       enabled: true
+      leaseDuration: "300s"
+      leaseRenewDeadline: "30s"
+      leaseRetryPeriod: "10s"
 
     ingressController:
       enabled: true
       loadbalancerMode: dedicated
+
 
     operator:
       enabled: true
