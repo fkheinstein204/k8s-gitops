@@ -16,26 +16,12 @@ spec:
         namespace: kube-system
       interval: 1m
   values:
-    clusterDomain: k8s-prod.lab
+    expose:
+      tls:
+        enabled: true
+        secretName: ingress-cert-habor
+      type: clusterIP
     externalURL: https://habor.prod.ftscode.de
-    harborAdminPassword: changeme
+    harborAdminPassword: admin
     persistence:
-      persistentVolumeClaim:
-        registry:
-          size: 200Gi
-    core:
-      updateStrategy:
-        type: Recreate
-    jobservice:
-      updateStrategy:
-        type: Recreate
-    registry:
-      updateStrategy:
-        type: Recreate
-    exposureType: ingress
-    ingress:
-      core:
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
-        hostname: habor.prod.ftscode.de
-        tls: true
+      enabled: false
