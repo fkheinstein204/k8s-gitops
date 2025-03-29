@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubernetes-dashboard
+  namespace: kubernetes-dashboard
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - ui-k8s.prod.ftscode.de
+      secretName: ui-k8s-prod-tls
+  rules:
+  - host: ui-k8s.prod.ftscode.de
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: kubernetes-dashboard-web
+              port:
+                name: web
+        - path: /api
+          pathType: Prefix
+          backend:
+            service:
+              name: kubernetes-dashboard-api
+              port:
+                name: api
