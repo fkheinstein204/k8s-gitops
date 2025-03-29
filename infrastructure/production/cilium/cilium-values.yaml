@@ -23,11 +23,20 @@ spec:
           - port-distribution
           - icmp
           - http
+        serviceMonitor:
+          enabled: true
+        dashboards:
+          enabled: true
       relay:
         enabled: true
+        rollOutPods: true
+        prometheus:
+          serviceMonitor:
+            enabled: true
 
       ui:
         enabled: true
+        rollOutPods: tru
 
       peerService:
         clusterDomain: k8s-prod.lab
