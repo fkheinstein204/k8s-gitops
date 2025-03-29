@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: metallb-system
 resources:
   - ../../base/metallb
-  #- ipaddresspool.yaml
+  - ipaddresspool.yaml
