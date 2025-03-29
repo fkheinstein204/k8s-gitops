@@ -4,3 +4,5 @@ namespace: kubernetes-dashboard
 resources:
   - ../../base/k8s-dashboard
   - ingress-tls-letsenc.yaml
+  - dashboard-adminuser.yaml
+  - admin-user.yaml
