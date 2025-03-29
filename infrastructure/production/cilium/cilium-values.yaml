@@ -42,7 +42,7 @@ spec:
 
     cgroup:
       automount:
-        enabled: false
+        enabled: true
       hostRoot: /sys/fs/cgroup
 
     securityContext:
