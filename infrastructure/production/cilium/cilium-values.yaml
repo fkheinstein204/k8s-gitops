@@ -23,8 +23,6 @@ spec:
           - port-distribution
           - icmp
           - http
-        serviceMonitor:
-          enabled: true
         dashboards:
           enabled: true
       relay:
