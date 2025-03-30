@@ -19,5 +19,13 @@ spec:
         namespace: portainer
       interval: 10h
   values:
+    image:
+      repository: portainer/portainer-ce
+    ingress:
+      enabled: false
+    persistence:
+      enabled: true
+      storageClass: nfs-client
+      size: 1Gi
     service:
       type: ClusterIP
