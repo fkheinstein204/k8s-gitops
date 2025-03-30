@@ -6,3 +6,5 @@ resources:
 - namespace.yaml
 - release.yaml
 - repository.yaml
+- dashboard-adminuser.yaml
+- secret.yaml
