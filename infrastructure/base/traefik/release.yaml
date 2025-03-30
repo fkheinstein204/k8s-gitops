@@ -26,7 +26,7 @@ spec:
       access:
         enabled: true
 
-    #tlsStore:
-    #  default:
-    #    defaultCertificate:
-    #      secretName: wildcard-prod-ftscode-de-prod-tls
+    tlsStore:
+      default:
+        defaultCertificate:
+          secretName: wildcard-prod-ftscode-de-prod-tls
