@@ -4,3 +4,4 @@ namespace: default
 resources:
   - ../../base/bookinfo-demo
   - basic-ingress.yaml
+  - tls-ingressyaml
