@@ -6,7 +6,6 @@ metadata:
   annotations:
     namespace: flux-system
 spec:
-  ingressClassName: traefik
   entryPoints:
     - websecure
   routes:
