@@ -1,0 +1,18 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: flux-ingress-route
+  annotations:
+    namespace: flux-system
+spec:
+  ingressClassName: traefik
+  entryPoints:
+    - websecure
+  routes:
+  - kind: Rule
+    match: Host(`weave.prod.ftscode.de`)
+    services:
+    - kind: Service
+      name: weave-gitops
+      port: 9001
