@@ -16,8 +16,8 @@ spec:
         namespace: ingress-nginx
       interval: 12h
   dependsOn:
-    - name: metallb
-      namespace: metallb-system
+  - name: metallb
+    namespace: metallb-system
   values:
     controller:
       config:
