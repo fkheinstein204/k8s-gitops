@@ -40,7 +40,9 @@ I operate two self-hosted Kubernetes clusters (Dev & Prod), each with:
 
 ### 🔐 Security & Secrets
 - **Keycloak** (OIDC authentication)
-- **Sealed Secrets**
+- **Sealed Secrets** (legacy workloads)
+- **HashiCorp Vault** – Centralized secrets management
+- **External Secrets** – Secure secret injection from Vault to Kubernetes
 
 ### 📦 Container Registry
 - **Harbor**
