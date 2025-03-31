@@ -25,8 +25,3 @@ spec:
   values:
     ui:
       enabled: true
-    serverTelemetry:
-      serviceMonitor:
-        enabled: true
-      prometheusRules:
-        enabled: true
