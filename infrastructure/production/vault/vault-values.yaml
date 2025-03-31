@@ -4,8 +4,6 @@ metadata:
   name: vault
   namespace: vault
 spec:
-  chart:
-
   values:
     server:
       affinity: ""
