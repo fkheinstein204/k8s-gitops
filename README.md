@@ -23,7 +23,7 @@ I operate two self-hosted Kubernetes clusters (Dev & Prod), each with:
 ## 🚀 Stack
 
 ### ☁️ Networking
-- Ingress Controller
+- **Ingress Controller**
 - **Traefik**
 - **MetalLB**
 - **External DNS**
