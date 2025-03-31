@@ -32,7 +32,7 @@ spec:
         trivy: 
           storageClass: nfs-client
 
-    externalURL: https://habor.prod.ftscode.de
+    externalURL: https://harbor.prod.ftscode.de
 
     expose:
       tls:
@@ -42,7 +42,7 @@ spec:
           secretName: "lag0-harbor-certificate"
       ingress:
         hosts:
-          core: habor.prod.ftscode.de
+          core: harbor.prod.ftscode.de
         className: "nginx"
         annotations:
           # note different ingress controllers may require a different ssl-redirect annotation
