@@ -5,6 +5,10 @@ metadata:
   namespace: vault
 spec:
   values:
+    global:
+      ui:
+        enabled: true
+        
     server:
       affinity: ""
 
