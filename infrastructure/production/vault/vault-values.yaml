@@ -5,8 +5,7 @@ metadata:
   namespace: vault
 spec:
   chart:
-    spec:
-      version: ">=1.0.0"
+
   values:
     server:
       affinity: ""
