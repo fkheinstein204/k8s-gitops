@@ -1,14 +1,19 @@
-# Basic ingress for istio bookinfo demo application, which can be found in below
+# TLS ingress example, requires the below two applications
 # https://raw.githubusercontent.com/istio/istio/release-1.11/samples/bookinfo/platform/kube/bookinfo.yaml
+# https://github.com/GoogleCloudPlatform/microservices-demo
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: basic-ingress
+  name: tls-ingress
   namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    cert-manager.io/cluster-issuer: "letsencrypt-production"  
 spec:
   ingressClassName: cilium
   rules:
-  - host: book.prod.ftscode.de
+  - host: bookinfo.prod.ftscode.de
     http:
       paths:
       - backend:
@@ -25,3 +30,7 @@ spec:
               number: 9080
         path: /
         pathType: Prefix
+  tls:
+  - hosts:
+    - bookinfo.prod.ftscode.de
+    secretName: bookinfo-tls
