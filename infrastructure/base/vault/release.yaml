@@ -12,8 +12,21 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: hashicorp
-        namespace: flux-system
-      version: '>=0.27.0-0'
+        namespace: vault
+      version: '0.29.1'
   interval: 1h0m0s
   releaseName: vault
   targetNamespace: vault
+
+  install:
+    crds: Create
+  upgrade:
+    crds: CreateReplace
+  values:
+    ui:
+      enabled: true
+    serverTelemetry:
+      serviceMonitor:
+        enabled: true
+      prometheusRules:
+        enabled: true
