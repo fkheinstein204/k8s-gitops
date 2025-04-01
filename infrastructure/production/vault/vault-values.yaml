@@ -6,9 +6,14 @@ metadata:
 spec:
   values:
     global:
-      ui:
-        enabled: true
-        
+      enabled: true
+
+    ui:
+      enabled: true
+      serviceType: "LoadBalancer"
+      serviceNodePort: null
+      externalPort: 8200
+
     server:
       affinity: ""
 
