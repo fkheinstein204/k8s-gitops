@@ -65,3 +65,8 @@ disable_issuer_verification=true
 
 
 ```
+
+
+
+## Ref
+https://yodamad.hashnode.dev/manage-your-secrets-in-kubernetes-with-external-secrets-hashicorp-vault#heading-install-vault
