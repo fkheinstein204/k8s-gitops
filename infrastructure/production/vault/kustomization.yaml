@@ -4,6 +4,8 @@ namespace: vault
 resources:
   - ../../base/vault
   - vault-ingress.yaml
+  - vault-rbac.yml
+  - vault-secret.yml
 
 patches:
   - path: vault-values.yaml
