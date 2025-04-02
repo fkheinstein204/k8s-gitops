@@ -24,3 +24,23 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+
+  values:
+    enabled: true
+
+    clusterDomain: k8s-prod.lab
+
+    architecture: standalone
+
+    primary:
+      persistence:
+        enabled: true
+        existingClaim: postgresql-pvc
+        size: "4Gi"
+      resources:
+        limits:
+          memory: "512Mi"
+          cpu: "500m"
+        requests:
+          memory: "512Mi"
+          cpu: "500m"
