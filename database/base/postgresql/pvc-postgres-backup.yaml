@@ -5,7 +5,7 @@ metadata:
   name: pv-postgresql-backup
   namespace: database
 spec:
-  storageClassName:  "network-storage"
+  storageClassName:  "nfs-client"
   capacity:
     storage: 2Gi
   accessModes:
@@ -30,7 +30,7 @@ spec:
   accessModes:
     - ReadWriteMany
   volumeName: pv-postgresql-backup
-  storageClassName:  "network-storage"
+  storageClassName:  "nfs-client"
   resources:
     requests:
       storage: 2Gi

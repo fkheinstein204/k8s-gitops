@@ -5,3 +5,7 @@ namespace: database
 resources:
   - ./pvc.yaml
   - ./pvc-postgres-backup.yaml
+  - ./release.yaml
+  - ./repository.yaml
+  - ./ingress.yaml
+  - ./namespace.yaml
