@@ -19,45 +19,35 @@ spec:
   interval: 30m
   chart:
     spec:
-      chart: loki
+      chart: loki-stack
       sourceRef:
         kind: HelmRepository
         name: grafana
         namespace: monitoring
       interval: 12h
   values:
-    deploymentMode: SingleBinary
+  values:
+    # overall loki-stack ref: https://github.com/grafana/helm-charts/blob/main/charts/loki-stack/values.yaml
+
+    # grafana readme: https://github.com/grafana/helm-charts/tree/main/charts/grafana
+    # grafana values: https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
+    grafana:
+      enabled: false
+
+    # Whether loki should present itself as the _default_ data source to grafana
+    isDefault: false
+
+    # loki values: https://github.com/grafana/helm-charts/blob/loki-2.15.2/charts/loki/values.yaml
     loki:
-      auth_enabled: false
-      commonConfig:
-        replication_factor: 1
-      storage:
-        type: 'filesystem'
-      schemaConfig:
-        configs:
-        - from: "2024-01-01"
-          store: tsdb
-          index:
-            prefix: loki_index_
-            period: 24h
-          object_store: filesystem # we're storing on filesystem so there's no real persistence here.
-          schema: v13
-    singleBinary:
       replicas: 1
-    read:
-      replicas: 0
-    backend:
-      replicas: 0
-    write:
-      replicas: 0
-    chunksCache:
-      # -- Specifies whether memcached based chunks-cache should be enabled
-      enabled: true
-      # -- Amount of memory allocated to chunks-cache for object storage (in MB).
-      allocatedMemory: 2048
-      resources:
-        limits:
-          memory: 2458Mi
-        requests:
-          cpu: 50m
-          memory: 700Mi
+      persistence:
+        enabled: true
+        storageClassName: openebs-lvm
+        accessModes:
+          - ReadWriteOnce
+        size: 50Gi
+
+      serviceMonitor:
+        enabled: true
+
+      podManagementPolicy: Parallel
