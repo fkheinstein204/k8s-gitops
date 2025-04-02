@@ -64,6 +64,17 @@ kubernetes_ca_cert="${k8s_cacert}" \
 disable_issuer_verification=true
 
 
+
+
+# Retrieve token
+$ es_account_token="$(kubectl get secret external-secrets -n external-secrets -o jsonpath='{ .data.token }' | base64 --decode)"
+# Create a role to link service account to policy
+$ kubectl exec vault-0 -n vault -- vault write auth/kubernetes/role/external-secrets-role \
+    bound_service_account_names=external-secrets \
+    bound_service_account_namespaces=external-secrets \
+    policies=external-secrets-policy \
+    ttl=24h
+
 ```
 
 
