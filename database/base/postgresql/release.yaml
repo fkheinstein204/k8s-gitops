@@ -40,6 +40,11 @@ spec:
     architecture: standalone
 
     primary:
+      persistence:
+        enabled: true
+        existingClaim: pvc-postgresql
+        size: "4Gi"
+
       service:
         type: NodePort
         nodePorts:
