@@ -9,12 +9,13 @@ spec:
   chart:
     spec:
       chart: postgresql
-      version: 16.4.16
+      version: '15.5.*'
       sourceRef:
         kind: HelmRepository
         name: postgresql
         namespace: database
   maxHistory: 3
+  releaseName: postgresql
   install:
     remediation:
       retries: 3
@@ -30,17 +31,16 @@ spec:
 
     clusterDomain: k8s-prod.lab
 
+    auth:
+      postgresPassword: postgres_password
+      username: temporal
+      password: temporal_password
+      database: temporal
+
     architecture: standalone
 
     primary:
-      persistence:
-        enabled: true
-        existingClaim: postgresql-pvc
-        size: "4Gi"
-      resources:
-        limits:
-          memory: "512Mi"
-          cpu: "500m"
-        requests:
-          memory: "512Mi"
-          cpu: "500m"
+      service:
+        type: NodePort
+        nodePorts:
+          postgresql: 30000
