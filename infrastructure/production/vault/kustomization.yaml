@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: vault
 resources:
   - ../../base/vault
-  - vault-ingress.yaml
+  #- vault-ingress.yaml
   - vault-rbac.yml
   - vault-secret.yml
 

@@ -7,10 +7,12 @@ spec:
   values:
     global:
       enabled: true
-
+      tlsDisable: false
+    injector:
+      enabled: true
     ui:
       enabled: true
-      serviceType: "NodePort"
+      serviceType: "ClusterIP"
       serviceNodePort: null
       externalPort: 8200
     server:
@@ -21,20 +23,32 @@ spec:
           value: trace
 
       ha:
+        enabled: true
+        replicas: 3 
+        raft:
           enabled: true
-          replicas: 3 
-          raft:
-            enabled: true
-            setNodeId: true
-            config: |
-                cluster_name = "k8s-prod.lab"
-                storage "raft" {
-                  path    = "/vault/data/"
-                }
+          setNodeId: true
+          config: |
+              cluster_name = "k8s-prod.lab"
+              storage "raft" {
+                path    = "/vault/data/"
+              }
 
-                listener "tcp" {
-                  address = "[::]:8200"
-                  cluster_address = "[::]:8201"
-                  tls_disable = "true"
-                }
-                service_registration "kubernetes" {}
+              listener "tcp" {
+                address = "[::]:8200"
+                cluster_address = "[::]:8201"
+                tls_disable = "true"
+              }
+              service_registration "kubernetes" {}
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+        hosts:
+          - host: vault.prod.ftscode.de
+        tls:
+          - secretName: vault-ingress-cert
+            hosts:
+              - vault.prod.ftscode.de
