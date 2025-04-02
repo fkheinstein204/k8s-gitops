@@ -9,7 +9,7 @@ metadata:
   name: pvc-postgresql
   namespace: database
 spec:
-  storageClassName: nfs-client
+  storageClassName: "nfs-client"
   accessModes:
   - ReadWriteMany
   resources:
