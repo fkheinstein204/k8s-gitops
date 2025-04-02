@@ -11,7 +11,8 @@ spec:
     ui:
       enabled: true
       serviceType: "NodePort"
-
+      serviceNodePort: null
+      externalPort: 8200
     server:
       affinity: ""
 
