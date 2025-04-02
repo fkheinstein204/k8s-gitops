@@ -39,7 +39,7 @@ spec:
           enabled: true
           externalTrafficPolicy: "Local"
       extraArgs:
-        enable-ssl-passthrough: ""
+        enable-ssl-passthrough: true
 
       replicaCount: 1
       minAvailable: 1
