@@ -10,10 +10,13 @@ spec:
   chart:
     spec:
       version: 2.9.10
-      chart: loki
+      chart: loki-stack
       sourceRef:
         kind: HelmRepository
         name: grafana-charts
         namespace: monitoring
       interval: 60m
   values:
+    grafana:
+      rbac:
+        pspEnabled: false
