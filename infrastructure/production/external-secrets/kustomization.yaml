@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - ../../base/external-secrets
   - external-secrets-secret.yaml
-  - external-secrets-secretstore.yml
+  #- external-secrets-secretstore.yml
