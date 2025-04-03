@@ -1,0 +1,20 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: minio-ingress-route
+  namespace: minio
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`minio.prod.ftscode.de`)
+      kind: Rule
+      services:
+        - name: minio-web
+          port: 9000
+    - match: Host(`minio-prod.prod.ftscode.de`)
+      kind: Rule
+      services:
+        - name: minio-api
+          port: 9090
+

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: minio
+  annotations:
+    fluxcd.io/namespace: minio
+  labels:
+    toolkit.fluxcd.io/tenant: sre-team
+    name: minio-app # Change this value to match metadata.name
