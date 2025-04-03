@@ -20,4 +20,4 @@ spec:
   allowFirstLastIPs: Yes
   blocks:
     - start: "10.128.1.240"  #${METALLB_IP_RANGE}
-      stop: "10.128.1.250"
+      stop: "10.128.1.249"
