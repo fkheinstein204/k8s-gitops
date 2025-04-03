@@ -71,7 +71,7 @@ spec:
         interval: 30s
 
 
-    kubeProxyReplacement: strict # This setting enable the cilium kube-proxy replacment
+    kubeProxyReplacement: true # This setting enable the cilium kube-proxy replacment
     ipam:
       mode: kubernetes  # This setting prevent cilium to overide the service and pod subnet and use the kubeadm network configuration
 
