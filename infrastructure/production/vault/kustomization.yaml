@@ -2,12 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: vault
 resources:
-  - ../../base/vault
-  - vault-ingress.yaml
-  - vault-rbac.yml
-  - vault-secret.yml
+#  - ../../base/vault
+#  - vault-ingress.yaml
+#  - vault-rbac.yml
+#  - vault-secret.yml
 
-patches:
-  - path: vault-values.yaml
-    target:
-      kind: HelmRelease
+#patches:
+#  - path: vault-values.yaml
+#    target:
+#      kind: HelmRelease

@@ -29,6 +29,10 @@ $ kubectl -n vault exec -it vault-2 -- vault operator unseal
 $ kubectl -n vault exec -it vault-2 -- vault operator unseal
 
 
+```
+
+
+```
 
 kubectl -n vault exec -it vault-0 -- vault login
 
@@ -47,6 +51,10 @@ EOF
 vault auth enable kubernetes
 
 
+```
+
+
+```
 
 
 # Populate wome variables regarding k8s configuration
@@ -64,8 +72,11 @@ kubernetes_ca_cert="${k8s_cacert}" \
 disable_issuer_verification=true
 
 
+```
 
 
+
+```
 # Retrieve token
 $ es_account_token="$(kubectl get secret external-secrets -n external-secrets -o jsonpath='{ .data.token }' | base64 --decode)"
 # Create a role to link service account to policy
@@ -80,4 +91,4 @@ $ kubectl exec vault-0 -n vault -- vault write auth/kubernetes/role/external-sec
 
 
 ## Ref
-https://yodamad.hashnode.dev/manage-your-secrets-in-kubernetes-with-external-secrets-hashicorp-vault#heading-install-vault
+[Kubernetes with external-secrets & HashiCorp Vault]( https://yodamad.hashnode.dev/manage-your-secrets-in-kubernetes-with-external-secrets-hashicorp-vault#heading-install-vault)
