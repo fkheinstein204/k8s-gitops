@@ -9,7 +9,3 @@ resources:
   - minio-namespace.yaml
   - minio-service.yaml
 
-  - minio-configmap.yaml
-  - minio-issuer.yaml
-  - minio-certificate.yaml
-  - release.yaml
