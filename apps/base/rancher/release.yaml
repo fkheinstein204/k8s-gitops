@@ -16,16 +16,16 @@ spec:
   values:
     hostname: rancher-ui.prod.ftscode.de
     bootstrapPassword: admin
-    ingress:
-      enabled: true
-      ingressClassName: nginx
-      annotations:
-        nginx.ingress.kubernetes.io/ssl-redirect: "false"
-        nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
-        cert-manager.io/cluster-issuer: "letsencrypt-production"
-      hosts:
-        - rancher-ui.prod.ftscode.de
-      tls:
-        - secretName: rancher-ui.tls
-          hosts:
-            - rancher-ui.prod.ftscode.de
+#    ingress:
+#      enabled: true
+#      ingressClassName: nginx
+#      annotations:
+#        nginx.ingress.kubernetes.io/ssl-redirect: "false"
+#        nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+#        cert-manager.io/cluster-issuer: "letsencrypt-production"
+#      hosts:
+#        - rancher-ui.prod.ftscode.de
+#      tls:
+#        - secretName: rancher-ui.tls
+#          hosts:
+#            - rancher-ui.prod.ftscode.de
