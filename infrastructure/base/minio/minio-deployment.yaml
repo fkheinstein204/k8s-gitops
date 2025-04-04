@@ -54,15 +54,9 @@ spec:
             initialDelaySeconds: 30
           env:
           - name: MINIO_ACCESS_KEY
-            valueFrom:
-              secretKeyRef:
-                name: minio-credentials
-                key: MINIO_ACCESS_KEY
+            value: 'minio_access_key'
           - name: MINIO_SECRET_KEY
-            valueFrom:
-              secretKeyRef:
-                name: minio-credentials
-                key: MINIO_SECRET_KEY
+            value: 'SnIz1xok36WfZcEUhPJao0GpsIXWnKdm4fA5WtfA'
           - name: MINIO_ROOT_USER
             valueFrom:
               secretKeyRef:
@@ -96,30 +90,13 @@ spec:
       - name: config 
         emptyDir: {} 
       containers: 
-      - resources:
-        limits:
-          cpu: 200m
-          memory: 256Mi
-        requests:
-          cpu: 2200m
-          memory: 100Mi
-      - name: MINIO_ACCESS_KEY
-        valueFrom:
-          secretKeyRef:
-            name: minio-credentials
-            key: MINIO_ACCESS_KEY
-      - name: MINIO_SECRET_KEY
-        valueFrom:
-          secretKeyRef:
-            name: minio-credentials
-            key: MINIO_SECRET_KEY
       - name: mc 
         image: minio/mc:latest 
         imagePullPolicy: IfNotPresent 
         command: 
         - /bin/sh 
         - -c 
-        - "mc --config-dir=/config config host add velero http://minio-web.minio.svc:9000  $MINIO_ACCESS_KEY $MINIO_SECRET_KEY   && mc --config-dir=/config mb -p velero/velero" 
+        - "mc --config-dir=/config config host add velero http://minio-web.minio.svc:9000  minio_access_key SnIz1xok36WfZcEUhPJao0GpsIXWnKdm4fA5WtfA  && mc --config-dir=/config mb -p velero/velero" 
         volumeMounts:
         - name: config
-          mountPath: "/config" 
+          mountPath: "/config"

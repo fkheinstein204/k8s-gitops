@@ -56,7 +56,7 @@ spec:
       secretContents:
         cloud: |
             [default]
-            aws_access_key_id=velero-backup
+            aws_access_key_id=minio_access_key
             aws_secret_access_key=SnIz1xok36WfZcEUhPJao0GpsIXWnKdm4fA5WtfA
 
     backupsEnabled: true
