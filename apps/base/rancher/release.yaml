@@ -12,9 +12,9 @@ spec:
         kind: HelmRepository
         name: rancher
         namespace: cattle-system
-      version: 2.11.0
+      version: 2.10.3
   values:
-    hostname: rancher.prod.ftscode.de
+    hostname: rancher-ui.prod.ftscode.de
     bootstrapPassword: admin
     ingress:
       enabled: true
