@@ -6,7 +6,6 @@ metadata:
   namespace: monitoring
 
 spec:
-  suspend: true
   releaseName: kube-prometheus-stack
   targetNamespace: monitoring
   install:
