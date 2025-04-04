@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: postgresql
-  namespace: postgresql
+  namespace: database
 spec:
   type: "oci"
   interval: 1h0m0s
