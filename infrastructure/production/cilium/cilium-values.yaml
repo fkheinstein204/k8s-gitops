@@ -35,6 +35,19 @@ spec:
       ui:
         enabled: true
         rollOutPods: true
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            nginx.ingress.kubernetes.io/ssl-redirect: "false"
+            nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+            cert-manager.io/cluster-issuer: "letsencrypt-production"
+          hosts:
+            - hubble-ui.prod.ftscode.de
+          tls:
+            - secretName: hubble-ui.tls
+              hosts:
+                - hubble-ui.prod.ftscode.de
 
       peerService:
         clusterDomain: k8s-prod.lab
