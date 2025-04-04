@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: postgresql
-      version: '16.4.*'
+      version: '15.5.*'
       sourceRef:
         kind: HelmRepository
         name: postgresql
@@ -39,20 +39,13 @@ spec:
 
     architecture: standalone
 
-    metrics:
-      enabled: true
-      serviceMonitor:
-        enabled: true
-
     primary:
       persistence:
         enabled: true
-        existingClaim: postgresql-pvc
+        existingClaim: pvc-postgresql
         size: "4Gi"
-      resources:
-        limits:
-          memory: "512Mi"
-          cpu: "500m"
-        requests:
-          memory: "512Mi"
-          cpu: "500m"
+
+      service:
+        type: NodePort
+        nodePorts:
+          postgresql: 30000

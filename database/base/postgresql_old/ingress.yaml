@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-monitoring
-  namespace: monitoring
+  name: postgresql
+  namespace: database
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
@@ -11,16 +11,16 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-      - grafana.prod.ftscode.de
-    secretName: grafana-monitor-tls
+      - postgresql.prod.ftscode.de
+    secretName: postgresql-monitor-tls
   rules:
-  - host: grafana.prod.ftscode.de
+  - host: postgresql.prod.ftscode.de
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: prometheus-grafana
+            name: postgresql
             port:
-              number: 80
+              number: 5342
