@@ -7,12 +7,25 @@ spec:
   interval: 1m
   chart:
     spec:
-      chart: rancher-latest
+      chart: rancher
       sourceRef:
         kind: HelmRepository
-        name: rancher-latest
+        name: rancher
         namespace: flux-system
-      version: 2.10.3
+      version: 2.11.0
   values:
-    hostname: rancher.lab.ftscode.de
+    hostname: rancher.prod.ftscode.de
     bootstrapPassword: admin
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/ssl-redirect: "false"
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+        cert-manager.io/cluster-issuer: "letsencrypt-production"
+      hosts:
+        - rancher-ui.prod.ftscode.de
+      tls:
+        - secretName: rancher-ui.tls
+          hosts:
+            - rancher-ui.prod.ftscode.de
