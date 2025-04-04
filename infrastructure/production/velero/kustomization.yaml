@@ -4,6 +4,7 @@ namespace: velero
 resources:
   - ../../base/velero
 
+
 patches:
   - path: velero-values.yaml
     target:
