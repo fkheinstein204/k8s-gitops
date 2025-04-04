@@ -54,15 +54,9 @@ spec:
             initialDelaySeconds: 30
           env:
           - name: MINIO_ACCESS_KEY
-            valueFrom:
-              secretKeyRef:
-                name: minio-credentials
-                key: MINIO_ACCESS_KEY
+            value: "minio"
           - name: MINIO_SECRET_KEY
-            valueFrom:
-              secretKeyRef:
-                name: minio-credentials
-                key: MINIO_SECRET_KEY
+            value: "minio123"
           - name: MINIO_ROOT_USER
             valueFrom:
               secretKeyRef:
@@ -77,3 +71,33 @@ spec:
       - name: data-volume
         persistentVolumeClaim:
           claimName: minio-pvc
+
+--- 
+apiVersion: batch/v1 
+kind: Job 
+metadata: 
+  namespace: velero 
+  name: minio-setup 
+  labels: 
+    component: minio 
+spec: 
+  template: 
+    metadata: 
+      name: minio-setup 
+    spec: 
+      restartPolicy: OnFailure 
+      volumes: 
+      - name: config 
+        emptyDir: {} 
+      containers: 
+       
+      - name: mc 
+        image: minio/mc:latest 
+        imagePullPolicy: IfNotPresent 
+        command: 
+        - /bin/sh 
+        - -c 
+        - "mc --config-dir=/config config host add velero http://minio-web.minio.svc:9000  minio minio123  && mc --config-dir=/config mb -p velero/velero" 
+        volumeMounts:
+        - name: config
+          mountPath: "/config" 
