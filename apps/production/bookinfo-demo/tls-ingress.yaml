@@ -9,7 +9,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
-    cert-manager.io/cluster-issuer: "letsencrypt-production"  
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
 spec:
   ingressClassName: cilium
   rules:
