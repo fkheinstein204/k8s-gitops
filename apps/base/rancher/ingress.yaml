@@ -4,13 +4,12 @@ kind: IngressRoute
 metadata:
   name: rancher
   namespace: cattle-system
-  annotations: 
-    kubernetes.io/ingress.class: traefik-external
 spec:
+  ingressClassName: traefik
   entryPoints:
     - websecure
   routes:
-    - match: Host(`rancher.lab.ftscode.de`)
+    - match: Host(`rancher.prod.ftscode.de`)
       kind: Rule
       services:
         - name: rancher

@@ -9,6 +9,6 @@ spec:
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-  commonName: "rancher.lab.ftscode.de"
+  commonName: "rancher.prod.ftscode.de"
   dnsNames:
-  - "rancher.lab.ftscode.de"
+  - "rancher.prod.ftscode.de"
