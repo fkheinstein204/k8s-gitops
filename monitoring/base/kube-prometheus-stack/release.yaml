@@ -15,7 +15,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: "62.4.0"
+      version: "70.4.x"
       sourceRef:
         kind: HelmRepository
         name: kube-prometheus-stack
@@ -32,7 +32,37 @@ spec:
               resources:
                 requests:
                   storage: 5Gi
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+          nginx.ingress.kubernetes.io/ssl-redirect: "false"
+        hosts:
+          - prometheus.prod.ftscode.de
+        tls:
+          - secretName: prometheus-cert-prod
+            hosts:
+              - prometheus.prod.ftscode.de
+
+
     alertmanager:
+      enabled: true
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+          nginx.ingress.kubernetes.io/ssl-redirect: "false"
+        hosts:
+          - alert.prod.ftscode.de
+        tls:
+          - secretName: alert-cert-prod
+            hosts:
+              - alert.prod.ftscode.de
+
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
@@ -43,6 +73,22 @@ spec:
                 requests:
                   storage: 1Gi
     grafana:
+      enabled: true
+
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+          nginx.ingress.kubernetes.io/ssl-redirect: "false"
+        hosts:
+          - grafana.prod.ftscode.de
+        tls:
+          - secretName: grafana-cert-prod
+            hosts:
+              - grafana.prod.ftscode.de
+
       persistence:
         enabled: true
         storageClassName: nfs-client
