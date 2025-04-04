@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
   name: rancher
-  namespace: flux-system
+  namespace: cattle-system
 spec:
   interval: 24h
   url: https://releases.rancher.com/server-charts/latest
