@@ -22,8 +22,8 @@ spec:
         backend:
           service:
             name: minio-api
-            port: 
-              number: 9001
+            port:
+              number: 9090
   - host: "minio.prod.ftscode.de"
     http:
       paths:
