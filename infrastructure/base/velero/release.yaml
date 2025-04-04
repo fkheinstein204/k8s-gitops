@@ -47,153 +47,17 @@ spec:
     # Resources allocated based on Robusta KRR output
     resources:
       requests:
-        cpu: 100m
-        memory: 128Mi
+        cpu: 500m
+        memory: 512Mi
       limits:
-        memory: 256Mi
+        memory: 512Mi
 
     # Init containers to add to the Velero deployment's pod spec. At least one plugin provider image is required.
     # If the value is a string then it is evaluated as a template.
     initContainers:
-      - name: velero-plugin-for-csi
-        image: velero/velero-plugin-for-csi:v0.6.0
-        imagePullPolicy: IfNotPresent
-        volumeMounts:
-          - mountPath: /target
-            name: plugins
       - name: velero-plugin-for-aws
-        image: velero/velero-plugin-for-aws:v1.8.0
+        image: velero/velero-plugin-for-aws:v1.9.0
         imagePullPolicy: IfNotPresent
         volumeMounts:
           - mountPath: /target
             name: plugins
-
-    configuration:
-      # Parameters for the BackupStorageLocation(s). Configure multiple by adding other element(s) to the backupStorageLocation slice.
-      # See https://velero.io/docs/v1.6/api-types/backupstoragelocation/
-      backupStorageLocation:
-        # name is the name of the backup storage location where backups should be stored. If a name is not provided,
-        # a backup storage location will be created with the name "default". Optional.
-      - name: 
-        # provider is the name for the backup storage location provider.
-        provider: aws # if we're using S3-compatible storage 
-        # bucket is the name of the bucket to store backups in. Required.
-        bucket: velero # the name of my specific bucket 
-        # caCert defines a base64 encoded CA bundle to use when verifying TLS connections to the provider. Optional.
-        caCert:
-        # prefix is the directory under which all Velero data should be stored within the bucket. Optional.
-        prefix: k8s-prod # a path under the bucket in which the backup data should be stored 
-
-        # default indicates this location is the default backup storage location. Optional.
-        default: true # prevents annoying warnings in the log
-        # validationFrequency defines how frequently Velero should validate the object storage. Optional.
-        validationFrequency:
-        # accessMode determines if velero can write to this backup storage location. Optional.
-        # default to ReadWrite, ReadOnly is used during migrations and restores.
-        accessMode: ReadWrite
-        credential:
-          # name of the secret used by this backupStorageLocation.
-          name: velero-aws-credentials # this is the sealed-secret we created above 
-
-          # name of key that contains the secret data to be used.
-          key: cloud # this is the key we used in the sealed-secret we created above 
-        # Additional provider-specific configuration. See link above
-        # for details of required/optional fields for your provider.
-        config:
-         region: # set-this-to-your-b2-region, for example us-west-002
-         s3ForcePathStyle:
-         s3Url: # set this to the https URL to your endpoint, for example "https://s3.us-west-002.backblazeb2.com"
-        #  kmsKeyId:
-        #  resourceGroup:
-        #  The ID of the subscription containing the storage account, if different from the cluster’s subscription. (Azure only)
-        #  subscriptionId:
-        #  storageAccount:
-        #  publicUrl:
-        #  Name of the GCP service account to use for this backup storage location. Specify the
-        #  service account here if you want to use workload identity instead of providing the key file.(GCP only)
-        #  serviceAccount:
-        #  Option to skip certificate validation or not if insecureSkipTLSVerify is set to be true, the client side should set the
-        #  flag. For Velero client Command like velero backup describe, velero backup logs needs to add the flag --insecure-skip-tls-verify
-        #  insecureSkipTLSVerify:
-
-    # Parameters for the VolumeSnapshotLocation(s). Configure multiple by adding other element(s) to the volumeSnapshotLocation slice.
-    # See https://velero.io/docs/v1.6/api-types/volumesnapshotlocation/
-    volumeSnapshotLocation:
-      # name is the name of the volume snapshot location where snapshots are being taken. Required.
-    - name:
-      # provider is the name for the volume snapshot provider.
-      provider:
-      credential:
-        # name of the secret used by this volumeSnapshotLocation.
-        name:
-        # name of key that contains the secret data to be used.
-        key:
-      # Additional provider-specific configuration. See link above
-      # for details of required/optional fields for your provider.
-      config: {}
-    #    region:
-    #    apiTimeout:
-    #    resourceGroup:
-    #    The ID of the subscription where volume snapshots should be stored, if different from the cluster’s subscription. If specified, also requires `configuration.volumeSnapshotLocation.config.resourceGroup`to be set. (Azure only)
-    #    subscriptionId:
-    #    incremental:
-    #    snapshotLocation:
-    #    project:
-
-      # annotations allows adding arbitrary annotations to this VolumeSnapshotLocation resource. Optional.
-      annotations: {}
-
-    # These are server-level settings passed as CLI flags to the `velero server` command. Velero
-    # uses default values if they're not passed in, so they only need to be explicitly specified
-    # here if using a non-default value. The `velero server` default values are shown in the
-    # comments below.
-    # --------------------
-    # `velero server` default: kopia
-    uploaderType:
-    # `velero server` default: 1m
-    backupSyncPeriod:
-    # `velero server` default: 4h
-    fsBackupTimeout:
-    # `velero server` default: 30
-    clientBurst:
-    # `velero server` default: 500
-    clientPageSize:
-    # `velero server` default: 20.0
-    clientQPS:
-    # Name of the default backup storage location. Default: default
-    defaultBackupStorageLocation:
-    # The default duration any single item operation can take before timing out, especially important for large volume schedules. Default 4h
-    defaultItemOperationTimeout:
-    # How long to wait by default before backups can be garbage collected. Default: 72h
-    defaultBackupTTL:
-    # Name of the default volume snapshot location.
-    defaultVolumeSnapshotLocations:
-    # `velero server` default: empty
-    disableControllers:
-    # `velero server` default: false
-    disableInformerCache: false
-    # `velero server` default: 1h
-    garbageCollectionFrequency:
-    # Set log-format for Velero pod. Default: text. Other option: json.
-    logFormat:
-    # Set log-level for Velero pod. Default: info. Other options: debug, warning, error, fatal, panic.
-    logLevel:
-    # The address to expose prometheus metrics. Default: :8085
-    metricsAddress:
-    # Directory containing Velero plugins. Default: /plugins
-    pluginDir:
-    # The address to expose the pprof profiler. Default: localhost:6060
-    profilerAddress:
-    # `velero server` default: false
-    restoreOnlyMode:
-    # `velero server` default: customresourcedefinitions,namespaces,storageclasses,volumesnapshotclass.snapshot.storage.k8s.io,volumesnapshotcontents.snapshot.storage.k8s.io,volumesnapshots.snapshot.storage.k8s.io,persistentvolumes,persistentvolumeclaims,secrets,configmaps,serviceaccounts,limitranges,pods,replicasets.apps,clusterclasses.cluster.x-k8s.io,clusters.cluster.x-k8s.io,clusterresourcesets.addons.cluster.x-k8s.io
-    restoreResourcePriorities:
-    # `velero server` default: 1m
-    storeValidationFrequency:
-    # How long to wait on persistent volumes and namespaces to terminate during a restore before timing out. Default: 10m
-    terminatingResourceTimeout:
-    # Bool flag to configure Velero server to move data by default for all snapshots supporting data movement. Default: false
-    defaultSnapshotMoveData:
-    # Comma separated list of velero feature flags. default: empty
-    # features: EnableCSI
-    features: EnableCSI
