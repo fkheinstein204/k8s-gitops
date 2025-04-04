@@ -52,9 +52,3 @@ spec:
       limits:
         memory: 256Mi
 
-    # Backup schedules to create.
-    schedules:
-      daily-backup:
-        schedule: "0 6 * * *"
-        template:
-          ttl: "120h"
