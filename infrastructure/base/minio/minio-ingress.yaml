@@ -14,16 +14,6 @@ spec:
         - minio.prod.ftscode.de
       secretName: minio-tls
   rules:
-  - host: "minio-console.prod.ftscode.de"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: minio-api
-            port:
-              number: 9090
   - host: "minio.prod.ftscode.de"
     http:
       paths:
@@ -34,3 +24,31 @@ spec:
             name: minio-web
             port:
               number: 9000
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minio-ingress
+  namespace: minio
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - minio-console.prod.ftscode.de
+      secretName: minio-console-tls
+  rules:
+  - host: "minio-console.prod.ftscode.de"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: minio-api
+            port:
+              number: 9090
