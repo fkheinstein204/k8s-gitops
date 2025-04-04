@@ -43,6 +43,7 @@ spec:
     mode: enabled
   maxHistory: 3
 
+
   values:
     # Resources allocated based on Robusta KRR output
     resources:
