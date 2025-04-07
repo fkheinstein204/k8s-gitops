@@ -94,8 +94,8 @@ spec:
 
 
     environment:
-      MINIO_SERVER_URL: https://minio-console.prod.ftscode.de
-      MINIO_BROWSER_REDIRECT_URL: https://minio.prod.ftscode.de
+      MINIO_SERVER_URL: https://minio-console.homelab.ftscode.de
+      MINIO_BROWSER_REDIRECT_URL: https://minio.homelab.ftscode.de
 
     ingress:
       enabled: true
