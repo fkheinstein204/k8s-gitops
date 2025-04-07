@@ -104,7 +104,7 @@ spec:
           command: 
           - /bin/sh 
           - -c 
-          - "mc --config-dir=/config config host add velero http://minio-web.minio.svc:9000  minio_access_key SnIz1xok36WfZcEUhPJao0GpsIXWnKdm4fA5WtfA  && mc --config-dir=/config mb -p velero/velero" 
+          - "mc --config-dir=/config config host add velero http://minio-web.minio.svc:9000  tqWHvfsIcycsU6SH2iG1 LUnAEotgj6XByuRBSHqhZ59TbiODBCBHe3jwtr1E  && mc --config-dir=/config mb -p velero/velero" 
           volumeMounts:
           - name: config
             mountPath: "/config"
