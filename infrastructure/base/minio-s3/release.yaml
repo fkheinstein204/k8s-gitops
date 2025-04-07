@@ -125,3 +125,47 @@ spec:
         - secretName: minio-console-tls-prod
           hosts:
             - minio-console.homelab.ftscode.de
+
+      policies:
+      - name: loki
+        statements:
+          - effect: Allow
+            resources:
+              - 'arn:aws:s3:::loki*/*'
+            actions:
+              - "s3:AbortMultipartUpload"
+              - "s3:GetObject"
+              - "s3:DeleteObject"
+              - "s3:PutObject"
+              - "s3:ListBucket"
+              - "s3:ListMultipartUploadParts"
+      - name: longhorn-policy
+        statements:
+        - resources:
+          - 'arn:aws:s3:::longhorn'
+          - 'arn:aws:s3:::longhorn/*'
+          actions:
+          - 's3:PutObject'
+          - 's3:GetObject'
+          - 's3:ListBucket'
+          - 's3:DeleteObject'
+      users:
+      - accessKey: loki
+        secretKey: lokiloki
+        policy: loki
+      - accessKey: longhorn
+        secretKey: longhorn-accesskey
+        #existingSecret: minio-secrets
+        #existingSecretKey: longhorn-accesskey
+        policy: longhorn-policy
+      buckets:
+      - name: longhorn
+        policy: none
+        purge: false
+        versioning: false
+        objectlocking: false
+      - name: loki
+        policy: none
+        purge: false
+        versioning: false
+        objectlocking: false
