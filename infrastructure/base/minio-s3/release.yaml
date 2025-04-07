@@ -28,11 +28,10 @@ spec:
     ##
     clusterDomain: k8s-prod.lab
 
-    #auth:
-    #  forceNewKeys: true
-    #  existingSecret: minio-credentials
-    #  rootUserSecretKey: root-user
-    #  rootPasswordSecretKey: root-password
+
+    existingSecret: minio-credentials
+    rootUserSecretKey: root-user
+    rootPasswordSecretKey: root-password
 
     ## minio mode, i.e. standalone or distributed
     mode: distributed ## other supported values are "standalone"
@@ -90,16 +89,7 @@ spec:
       - --console-address :9001
 
     extraEnv:
-      - name: MINIO_ROOT_USER
-        valueFrom:
-          secretKeyRef:
-            name: minio-credentials
-            key: root-user
-      - name: MINIO_ROOT_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: minio-credentials
-            key: root-password
+
 
     environment:
       MINIO_SERVER_URL: https://minio-console.prod.ftscode.de
