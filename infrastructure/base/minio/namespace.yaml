@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: minio-storage
+  labels:
+    name: minio-storage
+    app: minio
+    fluxcd.io/namespace: minio-storage
+    fluxcd.io/cluster: production
+    fluxcd.io/managed-by: flux-system
+    toolkit.fluxcd.io/tenant: sre-team

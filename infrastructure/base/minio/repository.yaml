@@ -1,0 +1,16 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: minio
+  namespace: minio-storage
+  labels:
+    name: minio
+    app: minio
+    fluxcd.io/namespace: minio-storage
+    fluxcd.io/cluster: production
+    fluxcd.io/managed-by: flux-system
+    toolkit.fluxcd.io/tenant: sre-team
+spec:
+  interval: 15m
+  url: https://charts.min.io/
