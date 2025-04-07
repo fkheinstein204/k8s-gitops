@@ -30,8 +30,8 @@ spec:
 
 
     existingSecret: minio-credentials
-    rootUserSecretKey: root-user
-    rootPasswordSecretKey: root-password
+    rootUserSecretKey: rootUser
+    rootPasswordSecretKey: rootPassword
 
     ## minio mode, i.e. standalone or distributed
     mode: distributed ## other supported values are "standalone"
