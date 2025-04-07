@@ -40,7 +40,7 @@ spec:
       - name: default
         provider: aws
         bucket: velero
-        prefix: optional-subdir
+        prefix: k8s-prod
         credential:
           name: velero-credentials
           key: cloud
