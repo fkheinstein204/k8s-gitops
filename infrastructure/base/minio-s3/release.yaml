@@ -29,12 +29,21 @@ spec:
     clusterDomain: k8s-prod.lab
 
     auth:
+      forceNewKeys: true
       existingSecret: minio-credentials
       rootUserSecretKey: root-user
       rootPasswordSecretKey: root-password
 
     ## minio mode, i.e. standalone or distributed
     mode: distributed ## other supported values are "standalone"
+
+    statefulset:
+      updateStrategy:
+        type: RollingUpdate
+      podManagementPolicy: Parallel
+      replicaCount: 3
+      zones: 1
+      drivesPerNode: 2
 
     ## Set default image, imageTag, and imagePullPolicy. mode is used to indicate the
     ##
@@ -54,6 +63,13 @@ spec:
       limits:
         cpu: 1
         memory: 2Gi
+
+    provisioning:
+      enabled: true
+      buckets:
+        - name: "loki"
+        - name: "tempo"
+        - name: "velero"
 
     metrics:
       serviceMonitor:
