@@ -28,6 +28,11 @@ spec:
     ##
     clusterDomain: k8s-prod.lab
 
+    auth:
+      existingSecret: minio-credentials
+      rootUserSecretKey: root-user
+      rootPasswordSecretKey: root-password
+
     ## minio mode, i.e. standalone or distributed
     mode: distributed ## other supported values are "standalone"
 
@@ -50,6 +55,10 @@ spec:
         cpu: 1
         memory: 2Gi
 
+    metrics:
+      serviceMonitor:
+        enabled: true  # for prom-operator
+        namespace: monitoring # namespace of prometheus
 
     service:
       name: minio
