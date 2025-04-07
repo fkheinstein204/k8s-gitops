@@ -28,9 +28,8 @@ spec:
     ##
     clusterDomain: k8s-prod.lab
 
-    rootUser: "admin"
-    rootPassword: "akPEKIvk7BbsdcswefwevwecHGd7V73XgbjgWSB5hvnKwxyZKJzQU"
-
+    rootUser: rootuser
+    rootPassword: rootpass123
     #existingSecret: minio-credentials
     #rootUserSecretKey: rootUser
     #rootPasswordSecretKey: rootPassword
@@ -159,7 +158,7 @@ spec:
       - accessKey: longhorn
         secretKey: longhorn-accesskey
         policy: longhorn-policy
-        
+
       buckets:
       - name: longhorn
         policy: none
