@@ -40,6 +40,7 @@ spec:
       - name: velero
         provider: aws
         bucket: velero
+        default: true
         credential:
           name: velero-credentials
           key: cloud
