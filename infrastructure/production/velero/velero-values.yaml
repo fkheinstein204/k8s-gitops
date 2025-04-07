@@ -44,7 +44,7 @@ spec:
           name: velero-credentials
           key: cloud
         config:
-          region: minio
+          region: velero
           profile: "default"
           s3ForcePathStyle:  "true"
           s3Url: https://minio-console.prod.ftscode.de/
