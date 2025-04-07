@@ -62,6 +62,13 @@ spec:
             hosts:
               - alert.prod.ftscode.de
 
+      additionalDatasources:
+        - name: Loki
+          type: loki
+          isDefault: false
+          access: proxy
+          url: http://loki-stack.monitoring.svc:3100
+
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
