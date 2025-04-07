@@ -150,14 +150,16 @@ spec:
           - 's3:ListBucket'
           - 's3:DeleteObject'
       users:
+      - accessKey: admin
+        secretKey: admin123
+        policy: consoleAdmin
       - accessKey: loki
         secretKey: lokiloki
         policy: loki
       - accessKey: longhorn
         secretKey: longhorn-accesskey
-        #existingSecret: minio-secrets
-        #existingSecretKey: longhorn-accesskey
         policy: longhorn-policy
+        
       buckets:
       - name: longhorn
         policy: none
