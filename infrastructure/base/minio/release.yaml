@@ -65,8 +65,8 @@ spec:
       - --console-address :9001
 
     environment:
-      MINIO_SERVER_URL: https://object.kube.mecan.ir
-      MINIO_BROWSER_REDIRECT_URL: https://minio.kube.mecan.ir
+      MINIO_SERVER_URL: https://minio-console.prod.ftscode.de
+      MINIO_BROWSER_REDIRECT_URL: https://minio.prod.ftscode.de
 
     consoleIngress:
       enabled: true
@@ -80,7 +80,7 @@ spec:
       hosts:
         - minio.prod.ftscode.de
       tls:
-        - secretName: minio-web-tls
+        - secretName: minio-web-tls-prod
           hosts:
             - minio.prod.ftscode.de
 
@@ -96,6 +96,6 @@ spec:
       hosts:
         - minio-console.prod.ftscode.de
       tls:
-        - secretName: minio-console-tls
+        - secretName: minio-console-tls-prod
           hosts:
             - minio-console.prod.ftscode.de
