@@ -37,7 +37,8 @@ spec:
 
     configuration:
       backupStorageLocation:
-      - provider: aws
+      - name: velero 
+        provider: aws
         bucket: velero
         default: true
         credential:
