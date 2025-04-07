@@ -94,13 +94,20 @@ spec:
       - name: config 
         emptyDir: {} 
       containers: 
-      - name: mc 
-        image: minio/mc:latest 
-        imagePullPolicy: IfNotPresent 
-        command: 
-        - /bin/sh 
-        - -c 
-        - "mc --config-dir=/config config host add velero http://minio-web.minio.svc:9000  minio_access_key SnIz1xok36WfZcEUhPJao0GpsIXWnKdm4fA5WtfA  && mc --config-dir=/config mb -p velero/velero" 
-        volumeMounts:
-        - name: config
-          mountPath: "/config"
+        - resources:
+            limits:
+              cpu: 100m
+              memory: 256Gi
+            requests:
+              cpu: 20m
+              memory: 100Mi
+          name: mc 
+          image: minio/mc:latest 
+          imagePullPolicy: IfNotPresent 
+          command: 
+          - /bin/sh 
+          - -c 
+          - "mc --config-dir=/config config host add velero http://minio-web.minio.svc:9000  minio_access_key SnIz1xok36WfZcEUhPJao0GpsIXWnKdm4fA5WtfA  && mc --config-dir=/config mb -p velero/velero" 
+          volumeMounts:
+          - name: config
+            mountPath: "/config"
