@@ -28,9 +28,8 @@ spec:
     ##
     clusterDomain: k8s-prod.lab
 
-
-    #rootUser: "admin"
-    #rootPassword: "admin123"
+    rootUser: "admin"
+    rootPassword: "admin123"
 
     #existingSecret: minio-credentials
     #rootUserSecretKey: rootUser
@@ -98,22 +97,6 @@ spec:
       MINIO_SERVER_URL: https://minio-console.prod.ftscode.de
       MINIO_BROWSER_REDIRECT_URL: https://minio.prod.ftscode.de
 
-    consoleIngress:
-      enabled: true
-      ingressClassName: nginx
-      annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-production"
-          certmanager.k8s.io/acme-http01-edit-in-place: "false"
-          kubernetes.io/tls-acme: "true"
-          nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      path: /
-      hosts:
-        - minio.prod.ftscode.de
-      tls:
-        - secretName: minio-web-tls-prod
-          hosts:
-            - minio.prod.ftscode.de
-
     ingress:
       enabled: true
       ingressClassName: nginx
@@ -124,8 +107,24 @@ spec:
           nginx.ingress.kubernetes.io/ssl-redirect: "true"
       path: /
       hosts:
-        - minio-console.prod.ftscode.de
+        - minio.homelab.ftscode.de
+      tls:
+        - secretName: minio-web-tls-prod
+          hosts:
+            - minio.homelab.ftscode.de
+
+    consoleIngress:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          certmanager.k8s.io/acme-http01-edit-in-place: "false"
+          kubernetes.io/tls-acme: "true"
+          nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      path: /
+      hosts:
+        - minio-console.homelab.ftscode.de
       tls:
         - secretName: minio-console-tls-prod
           hosts:
-            - minio-console.prod.ftscode.de
+            - minio-console.homelab.ftscode.de
