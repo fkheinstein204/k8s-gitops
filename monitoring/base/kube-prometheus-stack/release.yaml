@@ -62,12 +62,7 @@ spec:
             hosts:
               - alert.prod.ftscode.de
 
-      additionalDatasources:
-        - name: Loki
-          type: loki
-          isDefault: false
-          access: proxy
-          url: http://loki-stack.monitoring.svc:3100
+
 
       alertmanagerSpec:
         storage:
@@ -94,6 +89,13 @@ spec:
           - secretName: grafana-cert-prod
             hosts:
               - grafana.prod.ftscode.de
+              
+      additionalDatasources:
+        - name: Loki
+          type: loki
+          isDefault: false
+          access: proxy
+          url: http://loki-stack.monitoring.svc:3100
 
       persistence:
         enabled: true
