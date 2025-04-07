@@ -30,7 +30,7 @@ spec:
           - /bin/bash
           - -c
           args:
-          - minio server /data --console-address :9090
+          - minio server /data  --config-dir=/config  --console-address :9090
           ports:
           - containerPort: 9000
             name: web
@@ -42,6 +42,10 @@ spec:
           volumeMounts:
           - mountPath: /data
             name: data-volume
+          - name: storage
+            mountPath: "/storage"
+          - name: config
+            mountPath: "/config"
           livenessProbe:
             httpGet:
               path: /minio/health/live
@@ -71,12 +75,14 @@ spec:
       - name: data-volume
         persistentVolumeClaim:
           claimName: minio-pvc
+      - name: config
+        emptyDir: {}
 
 --- 
 apiVersion: batch/v1 
 kind: Job 
 metadata: 
-  namespace: velero 
+  namespace: minio 
   name: minio-setup 
   labels: 
     component: minio 
