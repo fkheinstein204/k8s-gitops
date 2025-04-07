@@ -28,8 +28,8 @@ spec:
     ##
     clusterDomain: k8s-prod.lab
 
-    rootUser: "admin"
-    rootPassword: "admin123"
+    #rootUser: "admin"
+    #rootPassword: "admin123"
 
     #existingSecret: minio-credentials
     #rootUserSecretKey: rootUser
@@ -89,9 +89,6 @@ spec:
 
     extraArgs:
       - --console-address :9001
-
-    extraEnv:
-
 
     environment:
       MINIO_SERVER_URL: https://minio-console.homelab.ftscode.de
