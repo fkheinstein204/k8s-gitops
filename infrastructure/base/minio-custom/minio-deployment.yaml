@@ -65,10 +65,6 @@ spec:
               secretKeyRef:
                 name: minio-credentials
                 key: MINIO_ROOT_PASSWORD
-          - name: MINIO_ACCESS_KEY
-            value: 'minio_access_key'
-          - name: MINIO_SECRET_KEY
-            value: 'SnIz1xok36WfZcEUhPJao0GpsIXWnKdm4fA5WtfA'
 
       volumes:
       - name: data-volume
