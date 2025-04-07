@@ -28,8 +28,8 @@ spec:
     ##
     clusterDomain: k8s-prod.lab
 
-    #rootUser: "admin"
-    #rootPassword: "admin123"
+    rootUser: "admin"
+    rootPassword: "akPEKIvk7BbsdcswefwevwecHGd7V73XgbjgWSB5hvnKwxyZKJzQU"
 
     #existingSecret: minio-credentials
     #rootUserSecretKey: rootUser
@@ -91,8 +91,8 @@ spec:
       - --console-address :9001
 
     environment:
-      MINIO_SERVER_URL: https://minio-console.homelab.ftscode.de
-      MINIO_BROWSER_REDIRECT_URL: https://minio.homelab.ftscode.de
+      MINIO_SERVER_URL: https://minio.homelab.ftscode.de
+      MINIO_BROWSER_REDIRECT_URL:  https://minio-console.homelab.ftscode.de
 
     ingress:
       enabled: true
