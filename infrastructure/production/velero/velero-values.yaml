@@ -52,7 +52,7 @@ spec:
 
     credentials:
       useSecret: true
-      name: velero-credential
+      name: velero-credentials
       existingSecret:
       secretContents:
         cloud: |
