@@ -37,15 +37,15 @@ spec:
 
     configuration:
       backupStorageLocation:
-      - name: default
+      - name: velero
         provider: aws
         bucket: velero
         credential:
           name: velero-credentials
           key: cloud
         config:
-          region: velero
-          profile: "default"
+          region: minio
+          profile: "velero"
           s3ForcePathStyle:  "true"
           s3Url: https://minio-console.prod.ftscode.de/
 
@@ -55,7 +55,7 @@ spec:
       existingSecret:
       secretContents:
         cloud: |
-            [default]
+            [velero]
             aws_access_key_id=tqWHvfsIcycsU6SH2iG1
             aws_secret_access_key=LUnAEotgj6XByuRBSHqhZ59TbiODBCBHe3jwtr1E
 
