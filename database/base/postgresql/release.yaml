@@ -48,7 +48,7 @@ spec:
       persistence:
         enabled: true
         existingClaim: postgresql-pvc
-        size: "4Gi"
+        size: "5Gi"
       resources:
         limits:
           memory: "512Mi"

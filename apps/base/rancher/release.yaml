@@ -14,7 +14,7 @@ spec:
         namespace: cattle-system
       version: 2.11.0
   values:
-    hostname: rancher-ui.prod.ftscode.de
+    hostname: rancher.prod.ftscode.de
     bootstrapPassword: admin
 #    ingress:
 #      enabled: true

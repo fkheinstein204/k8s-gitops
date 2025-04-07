@@ -48,7 +48,7 @@ spec:
           region: minio
           profile: "default"
           s3ForcePathStyle:  "true"
-          s3Url: https://minio.prod.ftscode.de/
+          s3Url: https://minio-console.prod.ftscode.de/
 
     credentials:
       useSecret: true
