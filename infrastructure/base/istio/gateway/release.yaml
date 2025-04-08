@@ -3,6 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: istio-gateway
+  namespace: istio-ingress
 spec:
   interval: 30m
   chart:
@@ -12,7 +13,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: istio
-        namespace: flux-system
+        namespace: istio-ingress
   releaseName: istio-gateway
   targetNamespace: istio-ingress
   install:
