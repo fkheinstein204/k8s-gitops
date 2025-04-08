@@ -4,5 +4,5 @@ namespace: flux-system
 resources:
   - ../../base/weave-gitops
   - ingress-tls.yml
-  #- ingress-tls-letsenc.yml
+  - ingress-tls-letsenc.yml
   #- ingressroute.yaml

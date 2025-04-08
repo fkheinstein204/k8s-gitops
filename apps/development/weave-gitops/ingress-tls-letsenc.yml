@@ -4,17 +4,17 @@ metadata:
   name: weave-gitops-prod
   namespace: flux-system
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     cert-manager.io/cluster-issuer: "letsencrypt-production"
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - ui-flux.prod.ftscode.de
-      secretName: ui-flux-prod-tls
+        - ui-flux.dev.ftscode.de
+      secretName: ui-flux-dev-tls
   rules:
-  - host: ui-flux.prod.ftscode.de
+  - host: ui-flux.dev.ftscode.de
     http:
       paths:
       - path: /
