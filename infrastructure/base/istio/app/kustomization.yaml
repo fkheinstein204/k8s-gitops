@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - release.yaml
+  - repository.yaml
 
 configMapGenerator:
   - name: istio-base-base-values
