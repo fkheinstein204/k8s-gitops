@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../base/podinfo
   - ingress-tls-lab.yaml
+  - ingress-tls.yaml
 
 patches:
   - path: podinfo-values.yaml

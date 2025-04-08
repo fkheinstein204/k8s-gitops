@@ -6,15 +6,15 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
-    cert-manager.io/cluster-issuer: "letsencrypt-production"
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - podinfo.prod.ftscode.de
-      secretName: podinfo-prod-tls
+        - podinfo.dev.ftscode.de
+      secretName: podinfo-dev-tls
   rules:
-  - host: podinfo.prod.ftscode.de
+  - host: podinfo.dev.ftscode.de
     http:
       paths:
       - path: /
