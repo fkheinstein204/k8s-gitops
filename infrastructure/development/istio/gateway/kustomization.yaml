@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: istio-ingress
 
 resources:
-  - ../../base/istio/gateway
+  - ../../../base/istio/gateway
 
 configMapGenerator:
   - name: istio-gateway-helm-values
