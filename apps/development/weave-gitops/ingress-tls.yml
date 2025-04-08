@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: weave-gitops
+  namespace: flux-system
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    cert-manager.io/cluster-issuer: "cluster-dev-ca-issuer"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - ui.dev.devops.lab
+      secretName: flux-ingress-tls
+  rules:
+  - host: ui.dev.devops.lab
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: weave-gitops
+            port:
+              number: 9001
