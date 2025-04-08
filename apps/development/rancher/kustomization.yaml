@@ -3,8 +3,5 @@ kind: Kustomization
 namespace: cattle-system
 resources:
   - ../../base/rancher
-
- patches:
-  - path: rancher-values.yaml
-    target:
-      kind: HelmRelease 
+  - ./ingress.yaml
+  - ./certificate.yaml
