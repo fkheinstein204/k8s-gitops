@@ -1,0 +1,18 @@
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: podinfo
+  namespace: podinfo
+spec:
+  parentRefs:
+    - kind: Gateway
+      name: podinfo-gateway
+      namespace: podinfo
+      sectionName: podinfo-tls-gw
+  hostnames:
+    - podinfo.home.svc
+  rules:
+    - backendRefs:
+        - name: podinfo
+          port: 9898

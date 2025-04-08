@@ -1,0 +1,27 @@
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+  name: podinfo-gateway
+  namespace: podinfo
+spec:
+  gatewayClassName: istio-gateway
+  listeners:
+    - protocol: HTTPS
+      port: 443
+      name: podinfo-tls-gw
+      hostname: "podinfo.home.svc"
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        certificateRefs:
+          - kind: Secret
+            name: main-gateway
+    - protocol: HTTP
+      port: 80
+      name: podinfo-web-gw
+      hostname: "podinfo.home.svc"
+      allowedRoutes:
+        namespaces:
+          from: All

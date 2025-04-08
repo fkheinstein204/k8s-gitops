@@ -1,0 +1,20 @@
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: podinfo-redirect
+  namespace: podinfo
+spec:
+  parentRefs:
+    - kind: Gateway
+      name: podinfo-gateway
+      namespace: podinfo
+      sectionName: podinfo-web-gw
+  hostnames:
+    - "*.home.svc"
+  rules:
+    - filters:
+        - type: RequestRedirect
+          requestRedirect:
+            scheme: https
+            statusCode: 301
