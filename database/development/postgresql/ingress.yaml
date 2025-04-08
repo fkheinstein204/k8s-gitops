@@ -4,17 +4,17 @@ metadata:
   name: postgresql
   namespace: database
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     cert-manager.io/cluster-issuer: "letsencrypt-production"
 spec:
   ingressClassName: nginx
   tls:
   - hosts:
-      - postgresql.prod.ftscode.de
-    secretName: postgresql-monitor-tls
+      - postgresql.dev.ftscode.de
+    secretName: postgresql-dev-tls
   rules:
-  - host: postgresql.prod.ftscode.de
+  - host: postgresql.dev.ftscode.de
     http:
       paths:
       - path: /

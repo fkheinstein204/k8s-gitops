@@ -4,8 +4,6 @@ kind: Kustomization
 namespace: database
 resources:
   - ./postgresql-pvc.yaml
-  - ./postgresql-expose.yaml
   - ./release.yaml
   - ./repository.yaml
-  - ./ingress.yaml
   - ./namespace.yaml

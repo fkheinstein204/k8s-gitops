@@ -1,0 +1,37 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: podinfo
+  namespace: podinfo
+spec:
+  chart:
+    spec:
+      version: ">=1.0.0"
+  values:
+    clusterDomain: k8s-dev.lab
+
+    auth:
+      postgresPassword: postgres_password
+      username: temporal
+      password: temporal_password
+      database: temporal
+
+    architecture: standalone
+
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+
+    primary:
+      persistence:
+        enabled: true
+        existingClaim: postgresql-pvc
+        size: "10Gi"
+      resources:
+        limits:
+          memory: "512Mi"
+          cpu: "500m"
+        requests:
+          memory: "512Mi"
+          cpu: "500m"
