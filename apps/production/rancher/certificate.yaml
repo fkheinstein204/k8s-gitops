@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: rancher-cert
+  namespace: cattle-system
+spec:
+  secretName: rancher-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "rancher.prod.ftscode.de"
+  dnsNames:
+  - "rancher.prod.ftscode.de"
