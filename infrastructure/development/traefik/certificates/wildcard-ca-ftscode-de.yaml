@@ -1,0 +1,15 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-dev-ftscode-dev-de
+  namespace: traefik
+spec:
+  secretName: wildcard-dev-ftscode-de-dev-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "*.dev.ftscode.de"
+  dnsNames:
+  - "dev.ftscode.de"
+  - "*.dev.ftscode.de"
