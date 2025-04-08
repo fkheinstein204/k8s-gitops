@@ -36,6 +36,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: istio-cni
+  namespace: istio-system
 spec:
   interval: 5m
   chart:
@@ -45,6 +46,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: istio
+        namespace: istio-system
   releaseName: istio-cni
   targetNamespace: istio-system
   dependsOn:
@@ -69,6 +71,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: istio-istiod
+  namespace: istio-system
 spec:
   interval: 5m
   chart:
@@ -78,6 +81,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: istio
+        namespace: istio-system
   releaseName: istio-istiod
   targetNamespace: istio-system
   dependsOn:
@@ -103,6 +107,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: istio-ztunnel
+  namespace: istio-system
 spec:
   interval: 5m
   chart:
@@ -112,6 +117,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: istio
+        namespace: istio-system
   releaseName: istio-ztunnel
   targetNamespace: istio-system
   dependsOn:
