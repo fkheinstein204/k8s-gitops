@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: podinfo-ingress
+  namespace: podinfo
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    cert-manager.io/cluster-issuer: "cluster-ca-intermediate"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - podinfo.dev.devops.lab
+      secretName: podinfo-devops-tls
+  rules:
+  - host: podinfo.dev.devops.lab
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: podinfo
+            port:
+              number: 9898
