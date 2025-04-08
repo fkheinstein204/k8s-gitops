@@ -5,3 +5,4 @@ resources:
   - ../../base/bookinfo-demo
   - basic-ingress.yaml
   - tls-ingress.yaml
+  - bookinfo-gateway.yaml
