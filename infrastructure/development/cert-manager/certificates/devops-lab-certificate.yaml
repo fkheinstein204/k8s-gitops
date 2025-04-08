@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ca-cert-devops
+spec:
+  secretName: devops-ca-key-pair
+  isCA: true
+  issuerRef:
+    name: cluster-ca-intermediate
+    kind: ClusterIssuer
+  commonName: "*.dev.devops.lab"
+  dnsNames:
+  - "dev.devops.lab"
+  - "*.dev.devops.lab"
