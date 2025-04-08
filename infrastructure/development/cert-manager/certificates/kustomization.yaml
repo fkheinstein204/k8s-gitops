@@ -2,8 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: cert-manager
 resources:
-  #- cloudflare-api-sealed-prod.yaml
   - cluster-root-ca.yaml
   - cluster-intermediate-ca.yaml
+  - devops-lab-certificate.yaml
+  #- cloudflare-api-sealed-prod.yaml
   #- clusterissuer-letsencrypt-production.yaml
   #- wildcard-ca-ftscode-de.yaml
