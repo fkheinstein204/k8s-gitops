@@ -1,0 +1,1 @@
+https://github.com/wahooli/gitops-repo/blob/cbf2fe252ff36a3dacfddf1724ef042802a17ab3/infrastructure/base/coredns/values-base.yaml

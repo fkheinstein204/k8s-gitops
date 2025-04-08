@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: coredns
+  namespace: flux-system
+
+spec:
+  releaseName: coredns
+  targetNamespace: kube-system
+  chart:
+    spec:
+      chart: coredns
+      sourceRef:
+        kind: HelmRepository
+        name: coredns
+        namespace: flux-system
+      interval: 24h
+  interval: 5m
+  # timeout: 10m
+  install:
+    timeout: 10m
+    remediation:
+      remediateLastFailure: true
+      retries: -1
