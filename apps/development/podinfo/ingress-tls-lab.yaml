@@ -6,7 +6,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
-    cert-manager.io/cluster-issuer: "cluster-ca-intermediate"
+    cert-manager.io/cluster-issuer: "cluster-dev-ca-issuer"
 spec:
   ingressClassName: nginx
   tls:
