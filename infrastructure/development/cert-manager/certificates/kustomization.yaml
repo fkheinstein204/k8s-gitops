@@ -5,6 +5,7 @@ resources:
   - cluster-root-ca.yaml
   - cluster-intermediate-ca.yaml
   - devops-lab-certificate.yaml
-  #- cloudflare-api-sealed-prod.yaml
+  - cloudflare-api-sealed-dev.yaml
   #- clusterissuer-letsencrypt-production.yaml
+  - clusterissuer-letsencrypt-staging.yaml
   #- wildcard-ca-ftscode-de.yaml
