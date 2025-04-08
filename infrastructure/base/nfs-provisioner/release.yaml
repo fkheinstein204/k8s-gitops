@@ -23,11 +23,11 @@ spec:
 
     nfs:
       server: 192.168.180.109
-      path: /HOMELAB-PROD/k8s-data-prod01
+      path: /HOMELAB-PROD/k8s-data-svr-01
       mountOptions:
       volumeName: nfs-subdir-external-provisioner-root
       # Reclaim policy for the main nfs volume
-      reclaimPolicy: Retain
+      reclaimPolicy: delete
 
     storageClass:
       create: true
