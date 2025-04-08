@@ -86,11 +86,11 @@ spec:
       type: ClusterIP
       port: 9001
 
-    tls:
-      enabled: true
-      certSecret: minio-tls
-      publicCrt: tls.crt
-      privateKey: tls.key
+    #tls:
+    #  enabled: true
+    #  certSecret: minio-tls
+    #  publicCrt: tls.crt
+    #  privateKey: tls.key
 
     extraArgs:
       - --console-address :9001

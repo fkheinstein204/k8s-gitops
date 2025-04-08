@@ -17,5 +17,5 @@ spec:
     - minio-api.minio.svc.k8s-prod.lab
     - minio.minio.svc.k8s-prod.lab
   issuerRef:
-    name: cluster-root-ca-issuer
+    name: cluster-production-ca-issuer
     kind: ClusterIssuer
