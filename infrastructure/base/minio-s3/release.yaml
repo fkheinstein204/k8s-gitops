@@ -91,7 +91,7 @@ spec:
       certSecret: minio-tls
       publicCrt: tls.crt
       privateKey: tls.key
-      
+
     extraArgs:
       - --console-address :9001
 
