@@ -64,24 +64,22 @@ spec:
       enabled: true
       loadbalancerMode: shared
 
-    #hostPort:
-    #  enabled: true
+    hostPort:
+      enabled: true
 
-    #l7Proxy: true
+    l7Proxy: true
 
-    #loadBalancer:
-    #  l7:
-    #    backend: envoy
+    loadBalancer:
+      l7:
+        backend: envoy
 
-    #operator:
-    #  enabled: true
-    #  tolerations: []
+    operator:
+      enabled: true
+      tolerations: []
 
-    #  peerService:
-    #    clusterDomain: k8s-prod.lab
-    #  serviceMonitor:
-    #    enabled: true
-    #    interval: 30s
+      serviceMonitor:
+        enabled: true
+        interval: 30s
 
 
     kubeProxyReplacement: true # This setting enable the cilium kube-proxy replacment
