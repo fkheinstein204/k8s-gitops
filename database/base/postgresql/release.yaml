@@ -16,6 +16,7 @@ spec:
         namespace: database
   maxHistory: 3
   releaseName: postgresql
+  targetNamespace: database
   install:
     remediation:
       retries: 3
@@ -27,4 +28,3 @@ spec:
     keepHistory: false
 
   values:
-  
