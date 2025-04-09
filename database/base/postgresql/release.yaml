@@ -9,11 +9,10 @@ spec:
   chart:
     spec:
       chart: bitnami/postgresql
-      version: '16.6.2'
+      version: 16.5.1
       sourceRef:
         kind: HelmRepository
         name: postgresql
-        namespace: database
   maxHistory: 3
   releaseName: postgresql
   targetNamespace: database
