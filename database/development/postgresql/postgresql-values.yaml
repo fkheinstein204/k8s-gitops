@@ -18,10 +18,10 @@ spec:
 
     architecture: standalone
 
-    metrics:
-      enabled: true
-      serviceMonitor:
-        enabled: true
+    #metrics:
+    #  enabled: true
+    #  serviceMonitor:
+    #    enabled: true
 
     primary:
       persistence:
