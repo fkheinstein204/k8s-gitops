@@ -8,8 +8,8 @@ spec:
   interval: 10m
   chart:
     spec:
-      chart: bitnami/postgresql
-      version: 16.5.1
+      chart: postgresql
+      version: '16.5.x'
       sourceRef:
         kind: HelmRepository
         name: postgresql
