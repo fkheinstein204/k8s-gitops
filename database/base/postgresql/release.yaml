@@ -27,4 +27,6 @@ spec:
     keepHistory: false
 
   values:
-    enabled: true
+    primary:
+      persistence:
+        enabled: false
