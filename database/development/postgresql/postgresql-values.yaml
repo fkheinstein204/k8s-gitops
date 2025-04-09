@@ -1,12 +1,10 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: podinfo
-  namespace: podinfo
+  name: postgresql
+  namespace: database
 spec:
-  chart:
-    spec:
-      version: ">=1.0.0"
+
   values:
     clusterDomain: k8s-dev.lab
 
@@ -18,10 +16,10 @@ spec:
 
     architecture: standalone
 
-    #metrics:
-    #  enabled: true
-    #  serviceMonitor:
-    #    enabled: true
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
 
     primary:
       persistence:

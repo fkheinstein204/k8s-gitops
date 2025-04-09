@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: postgresql
-      #version: '16.6.2'
+      version: '16.6.2'
       sourceRef:
         kind: HelmRepository
         name: postgresql
@@ -27,6 +27,4 @@ spec:
     keepHistory: false
 
   values:
-    primary:
-      persistence:
-        enabled: false
+  
