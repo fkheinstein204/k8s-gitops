@@ -32,11 +32,15 @@ spec:
 
       ha:
         enabled: true
+        replicas: 3
         raft:
           enabled: true
           setNodeId: true
           config: |
+              ui = true
+
               cluster_name = "k8s-dev.lab"
+
               storage "raft" {
                 path    = "/vault/data/"
               }
@@ -46,4 +50,14 @@ spec:
                 cluster_address = "[::]:8201"
                 tls_disable = "true"
               }
+
+              autopilot {
+                cleanup_dead_servers           = "true"
+                last_contact_threshold         = "200ms"
+                last_contact_failure_threshold = "10m"
+                max_trailing_logs              = 250000
+                min_quorum                     = 3
+                server_stabilization_time      = "10s"
+              }
+
               service_registration "kubernetes" {}
