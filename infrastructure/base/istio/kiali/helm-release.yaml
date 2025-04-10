@@ -36,7 +36,7 @@ spec:
               version_label_name: "app.kubernetes.io/version"
             server:
               web_fqdn: kiali.dev.ftscode.de
-              web_port: 8080
+              web_port: 443
               web_root: /
               web_schema: https
             deployment:
