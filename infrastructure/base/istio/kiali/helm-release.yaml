@@ -33,21 +33,21 @@ spec:
               version_label_name: "app.kubernetes.io/version"
             server:
               web_fqdn: kiali.dev.ftscode.de
-              web_port: 443
+              web_port: 8080
               web_root: /
               web_schema: https
             deployment:
               replicas: 2
               ingress:
                 enabled: true
+                class_name: "nginx"
                 override_yaml:
                   metadata:
                     annotations:
-                      nginx.ingress.kubernetes.io/backend-protocol: HTTP
-                      nginx.ingress.kubernetes.io/secure-backends: "false"
+                      nginx.ingress.kubernetes.io/secure-backends: "true"
+                      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
                       cert-manager.io/cluster-issuer: letsencrypt-production
                   spec:
-                    ingressClassName: nginx
                     rules:
                       - host: kiali.dev.ftscode.de
                         http:
