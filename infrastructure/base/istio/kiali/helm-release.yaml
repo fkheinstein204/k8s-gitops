@@ -50,19 +50,19 @@ spec:
                     ingressClassName: nginx
                     rules:
                       - host: kiali.dev.ftscode.de
-                          http:
+                        http:
                           paths:
                             - path: /
                               pathType: Prefix
                               backend:
                                   service:
-                                  name: kiali
-                                  port:
-                                    number: 20001
+                                    name: kiali
+                                    port:
+                                      number: 20001
                     tls:
                       - hosts:
                           - kiali.dev.ftscode.de
-                            secretName: kiali-tls
+                        secretName: kiali-tls
 
                 auth:
                     strategy: anonymous
