@@ -9,7 +9,7 @@ spec:
     spec:
       chart: vault
       reconcileStrategy: ChartVersion
-      version: '0.30.0'
+      version: '0.29.0'
       sourceRef:
         kind: HelmRepository
         name: hashicorp
