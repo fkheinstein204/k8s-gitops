@@ -15,6 +15,6 @@ configMapGenerator:
   - name: istio-istiod-overlay-values
     files:
       - values.yaml=istio-istiod-values.yaml
-  #- name: istio-ztunnel-overlay-values
-  #  files:
-  #    - values.yaml=istio-ztunnel-values.yaml
+  - name: istio-ztunnel-overlay-values
+    files:
+      - values.yaml=istio-ztunnel-values.yaml
