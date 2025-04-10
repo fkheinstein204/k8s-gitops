@@ -57,7 +57,7 @@ spec:
                                 enabled: false
                                 retention_period: "7d"
                                 scrape_interval: "30s"
-                            url: "http://kube-prometheus-stack-prometheus.prometheus:9090"
+                            url: "http://kube-prometheus-stack-prometheus.monitoring:9090"
                     grafana:
                         auth:
                             ca_file: ""
@@ -82,7 +82,7 @@ spec:
                             -   name: "Istio Wasm Extension Dashboard"
                         enabled: false
                         health_check_url: ""
-                        in_cluster_url: "http://kube-prometheus-stack-grafana.prometheus:3000"
+                        in_cluster_url: "http://kube-prometheus-stack-grafana.monitoring:3000"
                         is_core: false
                         url: ""
                     istio:
@@ -98,7 +98,7 @@ spec:
                         istio_api_enabled: true
                         # default: istio_canary_revision is undefined
                         istio_canary_revision: {}
-                        istio_identity_domain: "svc.cluster.local"
+                        istio_identity_domain: "svc.k8s-dev.lab"
                         istio_injection_annotation: "sidecar.istio.io/inject"
                         istio_sidecar_annotation: "sidecar.istio.io/status"
                         istio_sidecar_injector_config_map_name: "istio-sidecar-injector"
@@ -128,7 +128,7 @@ spec:
                             enabled: false
                             retention_period: "7d"
                             scrape_interval: "30s"
-                        url: "http://kube-prometheus-stack-prometheus.prometheus:9090"
+                        url: "http://kube-prometheus-stack-prometheus.monitoring:9090"
                     tracing:
                         auth:
                             ca_file: ""
