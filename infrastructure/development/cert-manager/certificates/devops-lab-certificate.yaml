@@ -7,7 +7,7 @@ spec:
   secretName: devops-ca-key-pair
   isCA: false
   issuerRef:
-    name: cluster-ca-intermediate-cert-tls
+    name: cluster-ca-intermediate
     kind: ClusterIssuer
   commonName: "*.dev.devops.lab"
   dnsNames:
