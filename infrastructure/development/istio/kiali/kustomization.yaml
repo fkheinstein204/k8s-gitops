@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: kiali
 resources:
   - ../../../base/istio/kiali
+  - ./kiali-ingress.yaml
