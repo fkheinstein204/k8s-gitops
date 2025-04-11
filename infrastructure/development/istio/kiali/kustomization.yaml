@@ -4,3 +4,6 @@ namespace: kiali
 resources:
   - ../../../base/istio/kiali
   - ./kiali-ingress.yaml
+  - ./kiali-virtualservice.yaml
+  - ./kiali-destinationrule.yaml
+  - ./kiali-gateway.yaml
