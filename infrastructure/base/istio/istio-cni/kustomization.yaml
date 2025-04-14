@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: istio-system
 resources:
   - ./release.yaml
-  - ./repository.yaml
+ # - ./repository.yaml
