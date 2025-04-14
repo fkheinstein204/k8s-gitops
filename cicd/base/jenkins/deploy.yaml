@@ -31,14 +31,13 @@ spec:
       containers:
       - name: jenkins
         image: jenkins/jenkins:jdk17
-        #image: jenkins/jenkins:lts-jdk11
         volumeMounts:
         - name: jenkins-store
           mountPath: /var/jenkins_home/
         imagePullPolicy: IfNotPresent
         env:
         - name: JAVA_OPTS
-          value: -XshowSettings:vm -Dhudson.slaves.NodeProvisioner.initialDelay=0 -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85 -Duser.timezone=Asia/Shanghai -Djenkins.install.runSetupWizard=true
+          value: -XshowSettings:vm -Dhudson.slaves.NodeProvisioner.initialDelay=0 -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85 -Duser.timezone=Europe/Berlin -Djenkins.install.runSetupWizard=true
         ports:
         - containerPort: 8080
           name: web

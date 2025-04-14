@@ -11,6 +11,7 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
+        - cicd.prod.ftscode.de
         - jenkins.prod.ftscode.de
       secretName: jenkins-prod-tls
   rules:
