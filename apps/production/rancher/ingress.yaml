@@ -14,4 +14,4 @@ spec:
         - name: rancher
           port: 80
   tls:
-    secretName: rancher-tls
+    secretName: rancher-prod-tls

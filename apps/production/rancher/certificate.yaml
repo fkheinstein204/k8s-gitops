@@ -5,7 +5,7 @@ metadata:
   name: rancher-cert
   namespace: cattle-system
 spec:
-  secretName: rancher-tls
+  secretName: rancher-prod-tls
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
