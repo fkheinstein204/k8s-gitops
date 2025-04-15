@@ -6,7 +6,7 @@ resources:
   - ../../../base/istio/istio-gateway
 
 patches:
-  - path: values.yaml
+  - path: istiod-values.yaml
     target:
       kind: HelmRelease
       name: istio-gateway
