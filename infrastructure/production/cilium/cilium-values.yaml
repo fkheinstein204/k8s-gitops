@@ -5,7 +5,9 @@ metadata:
   namespace: kube-system
 spec:
   values:
-
+    cni:
+      exclusive: false  # This setting is required to make cilium work with istio ambient mesh
+      
     prometheus:
       enabled: true
 
