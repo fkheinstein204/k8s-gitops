@@ -18,7 +18,7 @@ spec:
   dependsOn:
     - name: istio-base
     - name: istio-istiod
-    #- name: istio-cni
+    - name: istio-cni
   install:
     remediation:
       retries: 3
