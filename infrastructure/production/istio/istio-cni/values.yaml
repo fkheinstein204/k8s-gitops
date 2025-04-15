@@ -5,5 +5,4 @@ metadata:
   namespace: istio-system
 spec:
   values:
-    global:
-      istioNamespace: istio-system
+    profile: ambient
