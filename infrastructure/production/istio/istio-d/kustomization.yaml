@@ -9,4 +9,4 @@ patches:
   - path: values.yaml
     target:
       kind: HelmRelease
-      name: istiod
+      name: istio-istiod
