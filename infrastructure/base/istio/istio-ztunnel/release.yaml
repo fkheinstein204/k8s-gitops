@@ -18,8 +18,8 @@ spec:
   targetNamespace: istio-system
   dependsOn:
     - name: istio-base
-    - name: istio-cni
     - name: istio-istiod
+    #- name: istio-cni
   upgrade:
     remediation:
       retries: 3
