@@ -18,3 +18,49 @@ spec:
   #dependsOn:
   #  - name: cicd
   #    namespace: flux-system
+
+
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-tekton-pipelines
+  namespace: flux-system
+  labels:
+    substitution.flux.home.arpa/enabled: "true"
+spec:
+  interval: 15m
+  path: ./devops/production/tekton/pipelines
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-ops
+  wait: true
+  dependsOn:
+    #- name: apps-tekton
+    #  namespace: flux-system
+    - name: apps-tekton-tasks
+      namespace: flux-system
+
+
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-tekton-triggers
+  namespace: flux-system
+  labels:
+    substitution.flux.home.arpa/enabled: "true"
+spec:
+  interval: 15m
+  path: ./devops/production/tekton/triggers
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-ops
+  wait: true
+  #dependsOn:
+  #  - name: apps-tekton
+  #    namespace: flux-system
