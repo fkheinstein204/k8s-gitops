@@ -3,7 +3,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: echo-task
+  name: hello
   namespace: default
 spec:
   description: A simple example Tekton Task
@@ -18,7 +18,7 @@ spec:
 apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
-  name: echo-task-run
+  name: hello-task-run
   namespace: default
 spec:
   serviceAccountName: default
