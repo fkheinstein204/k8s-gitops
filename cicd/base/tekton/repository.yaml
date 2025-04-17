@@ -3,7 +3,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: cdfoundation-tekton-charts
+  name: tekton-pipelines
   namespace: tekton-pipelines
 spec:
   interval: 1h

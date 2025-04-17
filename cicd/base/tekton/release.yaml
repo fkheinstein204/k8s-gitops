@@ -13,7 +13,7 @@ spec:
       version: "v0.69.0"
       sourceRef:
         kind: HelmRepository
-        name: cdfoundation-tekton-charts
+        name: tekton-pipelines
         namespace: tekton-pipelines
       interval: 15m
   install:
