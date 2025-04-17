@@ -38,8 +38,8 @@ spec:
     name: flux-system
   wait: true
   dependsOn:
-    #- name: apps-tekton
-    #  namespace: flux-system
+    - name: cicd
+      namespace: flux-system
     - name: apps-tekton-tasks
       namespace: flux-system
 
@@ -61,6 +61,6 @@ spec:
     kind: GitRepository
     name: flux-system
   wait: true
-  #dependsOn:
-  #  - name: apps-tekton
-  #    namespace: flux-system
+  dependsOn:
+    - name: cicd
+      namespace: flux-system
