@@ -19,6 +19,7 @@ apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
   name: echo-task-run
+  namespace: default
 spec:
   serviceAccountName: default
   taskRef:
