@@ -9,12 +9,12 @@ spec:
   releaseName: tekton-pipelines
   chart:
     spec:
-      chart: cdf/tekton-pipelines
+      chart: cdf
       version: "v0.69.0"
       sourceRef:
         kind: HelmRepository
         name: cdfoundation-tekton-charts
-        namespace: flux-system
+        namespace: tekton-pipelines
       interval: 15m
   install:
     createNamespace: true
