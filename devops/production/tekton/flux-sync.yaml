@@ -15,9 +15,9 @@ spec:
     kind: GitRepository
     name: flux-system
   wait: true
-  #dependsOn:
-  #  - name: cicd
-  #    namespace: flux-system
+  dependsOn:
+    - name: cicd
+      namespace: flux-system
 
 
 ---
@@ -35,7 +35,7 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops
+    name: flux-system
   wait: true
   dependsOn:
     #- name: apps-tekton
@@ -59,7 +59,7 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops
+    name: flux-system
   wait: true
   #dependsOn:
   #  - name: apps-tekton
