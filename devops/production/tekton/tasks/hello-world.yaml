@@ -4,6 +4,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: echo-task
+  namespace: default
 spec:
   description: A simple example Tekton Task
   steps:
