@@ -3,4 +3,6 @@ kind: Kustomization
 namespace: tekton-pipelines
 resources:
   - ../../base/tekton
+  - ./ingress.yaml
+  - ./certificate.yaml
   #- ./ingress-tls.yaml
