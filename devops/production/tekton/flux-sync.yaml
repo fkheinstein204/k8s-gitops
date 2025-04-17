@@ -16,5 +16,5 @@ spec:
     name: flux-system
   wait: true
   dependsOn:
-    - name: cicd
-      namespace: flux-system
+    - name: tekton-pipelines
+      namespace: tekton-pipelines
