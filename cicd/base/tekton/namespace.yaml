@@ -3,6 +3,14 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: devops
+  name: texton-pipelines
+  labels:
+    name: tekton-pipelines
+    app.kubernetes.io/instance: tekton-pipelines
+    app.kubernetes.io/managed-by: flux-system
+    app.kubernetes.io/name: tekton-pipelines
+    app.kubernetes.io/part-of: tekton
+    app.kubernetes.io/version: v0.69.1
+    #kustomize.toolkit.fluxcd.io/prune: disabled
   #labels:
  #   kustomize.toolkit.fluxcd.io/prune: disabled
