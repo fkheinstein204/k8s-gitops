@@ -15,6 +15,6 @@ spec:
     kind: GitRepository
     name: flux-system
   wait: true
-  dependsOn:
-    - name: cicd
-      namespace: flux-system
+  #dependsOn:
+  #  - name: cicd
+  #    namespace: flux-system
