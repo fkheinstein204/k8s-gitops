@@ -1,0 +1,17 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: tekton
+  namespace: tekton-pipelines
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`tekton.prod.ftscode.de`)
+      kind: Rule
+      services:
+        - name: tekton-dashboard
+          port: 9097
+  tls:
+    secretName: tekton-prod-tls
