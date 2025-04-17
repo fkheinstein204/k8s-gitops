@@ -4,7 +4,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: hello-goodbye
-  namespace: default
+  #namespace: default
   labels:
     tekton.dev/pipeline: hello-goodbye
     tekton.dev/pipelineRun: hello-goodbye-run
@@ -30,7 +30,7 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   name: hello-goodbye-run
-  namespace: default
+  #namespace: default
   labels:
     tekton.dev/pipeline: hello-goodbye
     tekton.dev/pipelineRun: hello-goodbye-run

@@ -4,7 +4,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: hello
-  namespace: default
+  #namespace: default
 spec:
   description: A simple example Tekton Task
   steps:
@@ -19,7 +19,7 @@ apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
   name: hello-task-run
-  namespace: default
+  #namespace: default
 spec:
   serviceAccountName: default
   taskRef:
