@@ -3,22 +3,22 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: hello
+  name: echo-task
 spec:
+  description: A simple example Tekton Task
   steps:
-    - name: echo
-      image: alpine@sha256:c5b1261d6d3e43071626931fc004f70149baeba2c8ec672bd4f27761f8e1ad6b
+    - name: echo-step
+      image: alpine:3.14
       script: |
         #!/bin/sh
-        echo "Hello World from Tekton"
-
+        echo "Message: Hello, Tekton!"
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/redhat-developer/vscode-tekton/main/scheme/tekton.dev/v1beta1_TaskRun.json
 apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
-  name: hello-task-run
+  name: echo-task-run
 spec:
   serviceAccountName: default
   taskRef:
-    name: hello
+    name: echo-task
