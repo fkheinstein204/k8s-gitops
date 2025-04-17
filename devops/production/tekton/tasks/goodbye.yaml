@@ -4,7 +4,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: goodbye
-  namespace: default
+  #namespace: default
 spec:
   params:
     - name: username
