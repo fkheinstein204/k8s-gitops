@@ -28,3 +28,14 @@ patches:
       version: v1
       kind: Namespace
       name: tekton-pipelines
+
+  - patch: |
+      $patch: delete
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: tekton-pipelines-resolvers
+    target:
+      version: v1
+      kind: Namespace
+      name: tekton-pipelines-resolvers
