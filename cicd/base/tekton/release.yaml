@@ -14,7 +14,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: cdf
-        namespace: flux-system
+        namespace: tekton-pipelines
       interval: 12h
   install:
     createNamespace: true
