@@ -47,4 +47,21 @@ flux bootstrap github \
   --personal=true \
   --private=false 
 
+
+
+
+
+kind create cluster --name istio-cluster
+
+kubectl config use-context kind-istio-cluster
+
+flux bootstrap github \
+  --token-auth \
+  --owner=fkheinstein204 \
+  --repository=k8s-gitops \
+  --branch=main \
+  --path=./clusters/kind-demo-istio \
+  --personal=true \
+  --private=false
+
 ```
