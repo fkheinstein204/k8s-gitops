@@ -3,7 +3,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: istio-system
 resources:
-  - ../../../base/istio/istio-d
+  - ../../../../base/istio/istio-d
 
 patches:
   - path: values.yaml
