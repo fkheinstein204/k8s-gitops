@@ -86,7 +86,7 @@ spec:
 
                 enabled: false
                 health_check_url: ""
-                in_cluster_url: 'http://kube-prometheus-stack-grafana.monitoring:3000'
+                #in_cluster_url: 'http://kube-prometheus-stack-grafana.monitoring:3000'
                 is_core: false
                 url: ""
 
