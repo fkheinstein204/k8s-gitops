@@ -33,6 +33,7 @@ spec:
     name: flux-system
   path: ./infrastructure/kind-demo/configs
   prune: true
+  wait: true
 
 
 ---
