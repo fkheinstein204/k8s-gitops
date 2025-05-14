@@ -1,0 +1,125 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cilium
+  namespace: kube-system
+spec:
+  values:
+
+
+    # Istio configuration
+    # https://docs.cilium.io/en/latest/network/servicemesh/istio/
+    # Disable socket lb for non-root ns. This is used to enable Istio routing rules
+    socketLB:
+      hostNamespaceOnly: true
+
+    # Istio uses a CNI plugin to implement functionality for both sidecar and ambient modes. 
+    # To ensure that Cilium does not interfere with other CNI plugins on the node,
+    cni:
+      exclusive: false
+
+    prometheus:
+      enabled: true
+
+    envoy:
+      enabled: true
+
+    hubble:
+      enabled: true
+      metrics:
+        enabled:
+          - dns:query
+          - drop
+          - tcp
+          - flow
+          - port-distribution
+          - icmp
+          - http
+        dashboards:
+          enabled: true
+      relay:
+        enabled: true
+        rollOutPods: true
+        prometheus:
+          serviceMonitor:
+            enabled: true
+
+      ui:
+        enabled: true
+        rollOutPods: true
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            nginx.ingress.kubernetes.io/ssl-redirect: "false"
+            nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+            cert-manager.io/cluster-issuer: "letsencrypt-production"
+          hosts:
+            - hubble-ui.prod.ftscode.de
+          tls:
+            - secretName: hubble-ui.tls
+              hosts:
+                - hubble-ui.prod.ftscode.de
+
+      peerService:
+        clusterDomain: cluster.local
+
+    k8sServiceHost: 10.128.1.50
+    k8sServicePort: "6443"
+    l2announcements:    # This setting enable the metallb like arp load balancing
+      enabled: true
+      leaseDuration: "300s"
+      leaseRenewDeadline: "30s"
+      leaseRetryPeriod: "10s"
+
+    ingressController:
+      enabled: true
+      loadbalancerMode: shared
+
+    hostPort:
+      enabled: true
+
+    l7Proxy: true
+
+    loadBalancer:
+      l7:
+        backend: envoy
+
+    operator:
+      enabled: true
+      tolerations: []
+
+      peerService:
+        clusterDomain: cluster.local
+      serviceMonitor:
+        enabled: true
+        interval: 30s
+
+
+    kubeProxyReplacement: true # This setting enable the cilium kube-proxy replacment
+    ipam:
+      mode: kubernetes  # This setting prevent cilium to overide the service and pod subnet and use the kubeadm network configuration
+
+    cgroup:
+      automount:
+        enabled: false
+      hostRoot: /sys/fs/cgroup
+
+    securityContext:
+      capabilities:
+        ciliumAgent:
+          - CHOWN
+          - KILL
+          - NET_ADMIN
+          - NET_RAW
+          - IPC_LOCK
+          - SYS_ADMIN
+          - SYS_RESOURCE
+          - DAC_OVERRIDE
+          - FOWNER
+          - SETGID
+          - SETUID
+        cleanCiliumState:
+          - NET_ADMIN
+          - SYS_ADMIN
+          - SYS_RESOURCE
